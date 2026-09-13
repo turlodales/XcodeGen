@@ -3,16 +3,21 @@
 - [Can I use CocoaPods](#can-i-use-cocoapods)
 - [Can I use Crashlytics](#can-i-use-crashlytics)
 - [How do I setup code signing](#how-do-i-setup-code-signing)
+- [How do I add an Xcode capability](#how-do-i-add-an-xcode-capability)
 
 ## Can I still check in my project
 Absolutely. You will get the most out of XcodeGen by adding your project to your `.gitignore`, as this way you avoid merge conflicts. But you can also check it in as a halfway step.
 >Note that you can run `xcodegen` as a step in your build process on CI.
 
 ## What happens when I switch branches
-If files were added or removed in the new checkout you will most likely need to run `xcodegen` again so that your project will reference all your files. Unfortunately this is a manual step at the moment, but in the future this could be automated.
+If files were added or removed in the new checkout you will most likely need to run `xcodegen` again so that your project will reference all your files.
 
-For now you can always add xcodegen as a git `post-checkout` hook.
-It's recommended to use `--use-cache` so that the project is not needlessly generated.
+It's recommended to set up some [git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) to automate the process:
+- run `xcodegen generate --use-cache` on the following hooks. This will make sure the project is up to date when checking out, merging and rebasing
+  - `post-checkout`
+  - `post-rewrite`
+  - `post-merge`
+- run `xcodegen cache` on `pre-commit`. This will make sure that when switching branches the cache will be updated in case you made local changes, or are ammending a commit that added a new file.
  
 ## Can I use CocoaPods
 Yes, you will just need to run `pod install` after the project is generated to integrate Cocoapods changes.
@@ -37,3 +42,18 @@ This script will be added after `[CP] Embed Pods Frameworks.`
 ## How do I setup code signing
 
 At the moment there are no special options for code signing in XcodeGen, and this must be configured via regular build settings. For code signing to work, you need to tell Xcode which development team to use. This requires setting the `DEVELOPMENT_TEAM` and possibly `CODE_SIGN_STYLE` build settings. See [Configuring build settings](Usage.md#configuring-build-settings) for how to do that
+
+## How do I add an Xcode capability
+
+XcodeGen does not provide a general-purpose abstraction for Xcode capabilities. To determine what a capability requires, temporarily remove the generated project from source control, enable the capability in Xcode, and inspect the resulting project and entitlements changes.
+
+For example, enabling In-App Purchase adds the StoreKit framework. You can express that dependency in your spec as follows:
+
+```yaml
+targets:
+  MyApp:
+    dependencies:
+      - framework: StoreKit.framework
+```
+
+See [Dependencies](ProjectSpec.md#dependency) for the other dependency forms supported by XcodeGen. This example is specific to In-App Purchase; other capabilities may require different project settings, entitlements, or Xcode project attributes.

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -254,6 +254,8 @@
 			dependencies = (
 			);
 			name = Framework_tvOS;
+			packageProductDependencies = (
+			);
 			productName = Framework_tvOS;
 			productReference = 7D67F1C1BFBACE101DE7DB51 /* Framework.framework */;
 			productType = "com.apple.product-type.framework";
@@ -270,6 +272,8 @@
 			dependencies = (
 			);
 			name = Framework_macOS;
+			packageProductDependencies = (
+			);
 			productName = Framework_macOS;
 			productReference = 41FC82ED1C4C3B7B3D7B2FB7 /* Framework.framework */;
 			productType = "com.apple.product-type.framework";
@@ -286,6 +290,8 @@
 			dependencies = (
 			);
 			name = Framework_watchOS;
+			packageProductDependencies = (
+			);
 			productName = Framework_watchOS;
 			productReference = 6177CC6263783487E93F7F4D /* Framework.framework */;
 			productType = "com.apple.product-type.framework";
@@ -302,6 +308,8 @@
 			dependencies = (
 			);
 			name = Framework_iOS;
+			packageProductDependencies = (
+			);
 			productName = Framework_iOS;
 			productReference = 8A9274BE42A03DC5DA1FAD04 /* Framework.framework */;
 			productType = "com.apple.product-type.framework";
@@ -312,12 +320,12 @@
 		0FBAE303E3CFC2ABAC876A77 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1200;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 				};
 			};
 			buildConfigurationList = D91E14E36EC0B415578456F2 /* Build configuration list for PBXProject "Project" */;
-			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -325,6 +333,9 @@
 				en,
 			);
 			mainGroup = 293D0FF827366B513839236A;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = AC523591AC7BE9275003D2DB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

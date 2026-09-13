@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXFileReference section */
@@ -42,6 +42,8 @@
 			dependencies = (
 			);
 			name = ExternalTarget;
+			packageProductDependencies = (
+			);
 			productName = ExternalTarget;
 			productReference = 9194D98A5CC4C58074AED541 /* ExternalTarget.framework */;
 			productType = "com.apple.product-type.framework";
@@ -56,6 +58,8 @@
 			dependencies = (
 			);
 			name = Shared_TargetScheme;
+			packageProductDependencies = (
+			);
 			productName = Shared_TargetScheme;
 			productReference = 5FE827133AD803E389008F92 /* Shared_TargetScheme.bundle */;
 			productType = "com.apple.product-type.bundle";
@@ -66,12 +70,12 @@
 		8702E0566EC7EF0ABE948569 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1200;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 				};
 			};
 			buildConfigurationList = E903F6E8184E2A86CEC31778 /* Build configuration list for PBXProject "TestProject" */;
-			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -79,6 +83,9 @@
 				en,
 			);
 			mainGroup = 2D08B11F4EE060D112B7BCA1;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5B8D13EAC88739DF2D92F8AE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

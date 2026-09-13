@@ -7,6 +7,7 @@ public enum SpecParsingError: Error, CustomStringConvertible {
     case unknownPackageRequirement([String: Any])
     case invalidSourceBuildPhase(String)
     case invalidTargetReference(String)
+    case invalidTargetPlatformAsArray
     case invalidVersion(String)
     case unknownBreakpointType(String)
     case unknownBreakpointScope(String)
@@ -14,6 +15,7 @@ public enum SpecParsingError: Error, CustomStringConvertible {
     case unknownBreakpointActionType(String)
     case unknownBreakpointActionConveyanceType(String)
     case unknownBreakpointActionSoundName(String)
+    case invalidConfigsMappingFormat(keys: Set<String>)
 
     public var description: String {
         switch self {
@@ -27,6 +29,8 @@ public enum SpecParsingError: Error, CustomStringConvertible {
             return "Invalid Source Build Phase: \(error)"
         case let .invalidTargetReference(targetReference):
             return "Invalid Target Reference Syntax: \(targetReference)"
+        case .invalidTargetPlatformAsArray:
+            return "Invalid Target platform: Array not allowed with supported destinations"
         case let .invalidVersion(version):
             return "Invalid version: \(version)"
         case let .unknownPackageRequirement(package):
@@ -43,6 +47,8 @@ public enum SpecParsingError: Error, CustomStringConvertible {
             return "Unknown Breakpoint Action conveyance type: \(type)"
         case let .unknownBreakpointActionSoundName(name):
             return "Unknown Breakpoint Action sound name: \(name)"
+        case let .invalidConfigsMappingFormat(keys):
+            return "Invalid format: The value for \"\(keys.sorted().joined(separator: ", "))\" in `configs` must be mapping format"
         }
     }
 }

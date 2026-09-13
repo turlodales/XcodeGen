@@ -4,6 +4,7 @@ import PathKit
 import XcodeProj
 
 public typealias BuildType = XCScheme.BuildAction.Entry.BuildFor
+public typealias BuildArchitectures = XCScheme.BuildAction.Architectures
 
 public struct Scheme: Equatable {
 
@@ -88,10 +89,12 @@ public struct Scheme: Equatable {
         public var script: String
         public var name: String
         public var settingsTarget: String?
-        public init(name: String, script: String, settingsTarget: String? = nil) {
+        public var shell: String?
+        public init(name: String, script: String, shell: String? = nil, settingsTarget: String? = nil) {
             self.script = script
             self.name = name
             self.settingsTarget = settingsTarget
+            self.shell = shell
         }
     }
 
@@ -99,6 +102,7 @@ public struct Scheme: Equatable {
         public static let parallelizeBuildDefault = true
         public static let buildImplicitDependenciesDefault = true
         public static let runPostActionsOnFailureDefault = false
+        public static let buildArchitecturesDefault = BuildArchitectures.matchRunDestination
 
         public var targets: [BuildTarget]
         public var parallelizeBuild: Bool
@@ -106,6 +110,7 @@ public struct Scheme: Equatable {
         public var preActions: [ExecutionAction]
         public var postActions: [ExecutionAction]
         public var runPostActionsOnFailure: Bool
+        public var buildArchitectures: BuildArchitectures
 
         public init(
             targets: [BuildTarget],
@@ -113,7 +118,8 @@ public struct Scheme: Equatable {
             buildImplicitDependencies: Bool = buildImplicitDependenciesDefault,
             preActions: [ExecutionAction] = [],
             postActions: [ExecutionAction] = [],
-            runPostActionsOnFailure: Bool = false
+            runPostActionsOnFailure: Bool = runPostActionsOnFailureDefault,
+            buildArchitectures: BuildArchitectures = buildArchitecturesDefault
         ) {
             self.targets = targets
             self.parallelizeBuild = parallelizeBuild
@@ -121,13 +127,20 @@ public struct Scheme: Equatable {
             self.preActions = preActions
             self.postActions = postActions
             self.runPostActionsOnFailure = runPostActionsOnFailure
+            self.buildArchitectures = buildArchitectures
         }
     }
 
     public struct Run: BuildAction {
+        public static let enableAddressSanitizerDefault = false
+        public static let enableASanStackUseAfterReturnDefault = false
+        public static let enableThreadSanitizerDefault = false
+        public static let enableUBSanitizerDefault = false
         public static let disableMainThreadCheckerDefault = false
         public static let stopOnEveryMainThreadCheckerIssueDefault = false
+        public static let disableThreadPerformanceCheckerDefault = false
         public static let debugEnabledDefault = true
+        public static let enableGPUValidationModeDefault = true
 
         public var config: String?
         public var commandLineArguments: [String: Bool]
@@ -135,9 +148,14 @@ public struct Scheme: Equatable {
         public var postActions: [ExecutionAction]
         public var environmentVariables: [XCScheme.EnvironmentVariable]
         public var enableGPUFrameCaptureMode: XCScheme.LaunchAction.GPUFrameCaptureMode
-        public var enableGPUValidationMode: XCScheme.LaunchAction.GPUValidationMode
+        public var enableGPUValidationMode: Bool
+        public var enableAddressSanitizer: Bool
+        public var enableASanStackUseAfterReturn: Bool
+        public var enableThreadSanitizer: Bool
+        public var enableUBSanitizer: Bool
         public var disableMainThreadChecker: Bool
         public var stopOnEveryMainThreadCheckerIssue: Bool
+        public var disableThreadPerformanceChecker: Bool
         public var language: String?
         public var region: String?
         public var askForAppToLaunch: Bool?
@@ -148,6 +166,7 @@ public struct Scheme: Equatable {
         public var storeKitConfiguration: String?
         public var customLLDBInit: String?
         public var macroExpansion: String?
+        public var customWorkingDirectory: String?
 
         public init(
             config: String? = nil,
@@ -157,9 +176,14 @@ public struct Scheme: Equatable {
             postActions: [ExecutionAction] = [],
             environmentVariables: [XCScheme.EnvironmentVariable] = [],
             enableGPUFrameCaptureMode: XCScheme.LaunchAction.GPUFrameCaptureMode = XCScheme.LaunchAction.defaultGPUFrameCaptureMode,
-            enableGPUValidationMode: XCScheme.LaunchAction.GPUValidationMode = XCScheme.LaunchAction.GPUValidationMode.enabled,
+            enableGPUValidationMode: Bool = enableGPUValidationModeDefault,
+            enableAddressSanitizer: Bool = enableAddressSanitizerDefault,
+            enableASanStackUseAfterReturn: Bool = enableASanStackUseAfterReturnDefault,
+            enableThreadSanitizer: Bool = enableThreadSanitizerDefault,
+            enableUBSanitizer: Bool = enableUBSanitizerDefault,
             disableMainThreadChecker: Bool = disableMainThreadCheckerDefault,
             stopOnEveryMainThreadCheckerIssue: Bool = stopOnEveryMainThreadCheckerIssueDefault,
+            disableThreadPerformanceChecker: Bool = disableThreadPerformanceCheckerDefault,
             language: String? = nil,
             region: String? = nil,
             askForAppToLaunch: Bool? = nil,
@@ -168,17 +192,23 @@ public struct Scheme: Equatable {
             simulateLocation: SimulateLocation? = nil,
             storeKitConfiguration: String? = nil,
             customLLDBInit: String? = nil,
-            macroExpansion: String? = nil
+            macroExpansion: String? = nil,
+            customWorkingDirectory: String? = nil
         ) {
             self.config = config
             self.commandLineArguments = commandLineArguments
             self.preActions = preActions
             self.postActions = postActions
             self.environmentVariables = environmentVariables
+            self.enableAddressSanitizer = enableAddressSanitizer
+            self.enableASanStackUseAfterReturn = enableASanStackUseAfterReturn
+            self.enableThreadSanitizer = enableThreadSanitizer
+            self.enableUBSanitizer = enableUBSanitizer
             self.disableMainThreadChecker = disableMainThreadChecker
             self.enableGPUFrameCaptureMode = enableGPUFrameCaptureMode
             self.enableGPUValidationMode = enableGPUValidationMode
             self.stopOnEveryMainThreadCheckerIssue = stopOnEveryMainThreadCheckerIssue
+            self.disableThreadPerformanceChecker = disableThreadPerformanceChecker
             self.language = language
             self.region = region
             self.askForAppToLaunch = askForAppToLaunch
@@ -188,19 +218,29 @@ public struct Scheme: Equatable {
             self.storeKitConfiguration = storeKitConfiguration
             self.customLLDBInit = customLLDBInit
             self.macroExpansion = macroExpansion
+            self.customWorkingDirectory = customWorkingDirectory
         }
     }
 
     public struct Test: BuildAction {
         public static let gatherCoverageDataDefault = false
+        public static let enableAddressSanitizerDefault = false
+        public static let enableASanStackUseAfterReturnDefault = false
+        public static let enableThreadSanitizerDefault = false
+        public static let enableUBSanitizerDefault = false
         public static let disableMainThreadCheckerDefault = false
         public static let debugEnabledDefault = true
         public static let captureScreenshotsAutomaticallyDefault = true
         public static let deleteScreenshotsWhenEachTestSucceedsDefault = true
+        public static let preferredScreenCaptureFormatDefault = XCScheme.TestAction.ScreenCaptureFormat.screenRecording
 
         public var config: String?
         public var gatherCoverageData: Bool
         public var coverageTargets: [TestableTargetReference]
+        public var enableAddressSanitizer: Bool
+        public var enableASanStackUseAfterReturn: Bool
+        public var enableThreadSanitizer: Bool
+        public var enableUBSanitizer: Bool
         public var disableMainThreadChecker: Bool
         public var commandLineArguments: [String: Bool]
         public var targets: [TestTarget]
@@ -214,6 +254,8 @@ public struct Scheme: Equatable {
         public var captureScreenshotsAutomatically: Bool
         public var deleteScreenshotsWhenEachTestSucceeds: Bool
         public var testPlans: [TestPlan]
+        public var macroExpansion: String?
+        public var preferredScreenCaptureFormat: XCScheme.TestAction.ScreenCaptureFormat
 
         public struct TestTarget: Equatable, ExpressibleByStringLiteral {
             
@@ -266,6 +308,10 @@ public struct Scheme: Equatable {
             config: String? = nil,
             gatherCoverageData: Bool = gatherCoverageDataDefault,
             coverageTargets: [TestableTargetReference] = [],
+            enableAddressSanitizer: Bool = enableAddressSanitizerDefault,
+            enableASanStackUseAfterReturn: Bool = enableASanStackUseAfterReturnDefault,
+            enableThreadSanitizer: Bool = enableThreadSanitizerDefault,
+            enableUBSanitizer: Bool = enableUBSanitizerDefault,
             disableMainThreadChecker: Bool = disableMainThreadCheckerDefault,
             randomExecutionOrder: Bool = false,
             parallelizable: Bool = false,
@@ -280,11 +326,17 @@ public struct Scheme: Equatable {
             debugEnabled: Bool = debugEnabledDefault,
             customLLDBInit: String? = nil,
             captureScreenshotsAutomatically: Bool = captureScreenshotsAutomaticallyDefault,
-            deleteScreenshotsWhenEachTestSucceeds: Bool = deleteScreenshotsWhenEachTestSucceedsDefault
+            deleteScreenshotsWhenEachTestSucceeds: Bool = deleteScreenshotsWhenEachTestSucceedsDefault,
+            macroExpansion: String? = nil,
+            preferredScreenCaptureFormat: XCScheme.TestAction.ScreenCaptureFormat = preferredScreenCaptureFormatDefault
         ) {
             self.config = config
             self.gatherCoverageData = gatherCoverageData
             self.coverageTargets = coverageTargets
+            self.enableAddressSanitizer = enableAddressSanitizer
+            self.enableASanStackUseAfterReturn = enableASanStackUseAfterReturn
+            self.enableThreadSanitizer = enableThreadSanitizer
+            self.enableUBSanitizer = enableUBSanitizer
             self.disableMainThreadChecker = disableMainThreadChecker
             self.commandLineArguments = commandLineArguments
             self.targets = targets
@@ -298,6 +350,8 @@ public struct Scheme: Equatable {
             self.customLLDBInit = customLLDBInit
             self.captureScreenshotsAutomatically = captureScreenshotsAutomatically
             self.deleteScreenshotsWhenEachTestSucceeds = deleteScreenshotsWhenEachTestSucceeds
+            self.macroExpansion = macroExpansion
+            self.preferredScreenCaptureFormat = preferredScreenCaptureFormat
         }
 
         public var shouldUseLaunchSchemeArgsEnv: Bool {
@@ -396,6 +450,7 @@ extension Scheme.ExecutionAction: JSONObjectConvertible {
         script = try jsonDictionary.json(atKeyPath: "script")
         name = jsonDictionary.json(atKeyPath: "name") ?? "Run Script"
         settingsTarget = jsonDictionary.json(atKeyPath: "settingsTarget")
+        shell = jsonDictionary.json(atKeyPath: "shell")
     }
 }
 
@@ -405,6 +460,7 @@ extension Scheme.ExecutionAction: JSONEncodable {
             "script": script,
             "name": name,
             "settingsTarget": settingsTarget,
+            "shell": shell
         ]
     }
 }
@@ -473,13 +529,24 @@ extension Scheme.Run: JSONObjectConvertible {
         } else {
             enableGPUFrameCaptureMode = XCScheme.LaunchAction.defaultGPUFrameCaptureMode
         }
+
+        // support deprecated gpuValidationMode enum that was removed from XcodeProj
         if let gpuValidationMode: String = jsonDictionary.json(atKeyPath: "enableGPUValidationMode") {
-            enableGPUValidationMode = XCScheme.LaunchAction.GPUValidationMode.fromJSONValue(gpuValidationMode)
+            switch gpuValidationMode {
+            case "enabled", "extended": enableGPUValidationMode = true
+            case "disabled": enableGPUValidationMode = false
+            default: enableGPUValidationMode = Scheme.Run.enableGPUValidationModeDefault
+            }
         } else {
-            enableGPUValidationMode = XCScheme.LaunchAction.defaultGPUValidationMode
+            enableGPUValidationMode = jsonDictionary.json(atKeyPath: "enableGPUValidationMode") ?? Scheme.Run.enableGPUValidationModeDefault
         }
+        enableAddressSanitizer = jsonDictionary.json(atKeyPath: "enableAddressSanitizer") ?? Scheme.Run.enableAddressSanitizerDefault
+        enableASanStackUseAfterReturn = jsonDictionary.json(atKeyPath: "enableASanStackUseAfterReturn") ?? Scheme.Run.enableASanStackUseAfterReturnDefault
+        enableThreadSanitizer = jsonDictionary.json(atKeyPath: "enableThreadSanitizer") ?? Scheme.Run.enableThreadSanitizerDefault
+        enableUBSanitizer = jsonDictionary.json(atKeyPath: "enableUBSanitizer") ?? Scheme.Run.enableUBSanitizerDefault
         disableMainThreadChecker = jsonDictionary.json(atKeyPath: "disableMainThreadChecker") ?? Scheme.Run.disableMainThreadCheckerDefault
         stopOnEveryMainThreadCheckerIssue = jsonDictionary.json(atKeyPath: "stopOnEveryMainThreadCheckerIssue") ?? Scheme.Run.stopOnEveryMainThreadCheckerIssueDefault
+        disableThreadPerformanceChecker = jsonDictionary.json(atKeyPath: "disableThreadPerformanceChecker") ?? Scheme.Run.disableThreadPerformanceCheckerDefault
         language = jsonDictionary.json(atKeyPath: "language")
         region = jsonDictionary.json(atKeyPath: "region")
         debugEnabled = jsonDictionary.json(atKeyPath: "debugEnabled") ?? Scheme.Run.debugEnabledDefault
@@ -500,6 +567,7 @@ extension Scheme.Run: JSONObjectConvertible {
         }
         customLLDBInit = jsonDictionary.json(atKeyPath: "customLLDBInit")
         macroExpansion = jsonDictionary.json(atKeyPath: "macroExpansion")
+        customWorkingDirectory = jsonDictionary.json(atKeyPath: "customWorkingDirectory")
     }
 }
 
@@ -523,8 +591,24 @@ extension Scheme.Run: JSONEncodable {
             dict["enableGPUFrameCaptureMode"] = enableGPUFrameCaptureMode.toJSONValue()
         }
         
-        if enableGPUValidationMode != XCScheme.LaunchAction.defaultGPUValidationMode {
-            dict["enableGPUValidationMode"] = enableGPUValidationMode.toJSONValue()
+        if enableGPUValidationMode != Scheme.Run.enableGPUValidationModeDefault {
+            dict["enableGPUValidationMode"] = enableGPUValidationMode
+        }
+
+        if enableAddressSanitizer != Scheme.Run.enableAddressSanitizerDefault {
+            dict["enableAddressSanitizer"] = enableAddressSanitizer
+        }
+
+        if enableASanStackUseAfterReturn != Scheme.Run.enableASanStackUseAfterReturnDefault {
+            dict["enableASanStackUseAfterReturn"] = enableASanStackUseAfterReturn
+        }
+
+        if enableThreadSanitizer != Scheme.Run.enableThreadSanitizerDefault {
+            dict["enableThreadSanitizer"] = enableThreadSanitizer
+        }
+
+        if enableUBSanitizer != Scheme.Run.enableUBSanitizerDefault {
+            dict["enableUBSanitizer"] = enableUBSanitizer
         }
 
         if disableMainThreadChecker != Scheme.Run.disableMainThreadCheckerDefault {
@@ -533,6 +617,10 @@ extension Scheme.Run: JSONEncodable {
 
         if stopOnEveryMainThreadCheckerIssue != Scheme.Run.stopOnEveryMainThreadCheckerIssueDefault {
             dict["stopOnEveryMainThreadCheckerIssue"] = stopOnEveryMainThreadCheckerIssue
+        }
+
+        if disableThreadPerformanceChecker != Scheme.Run.disableThreadPerformanceCheckerDefault {
+            dict["disableThreadPerformanceChecker"] = disableThreadPerformanceChecker
         }
 
         if debugEnabled != Scheme.Run.debugEnabledDefault {
@@ -547,6 +635,9 @@ extension Scheme.Run: JSONEncodable {
         }
         if let customLLDBInit = customLLDBInit {
             dict["customLLDBInit"] = customLLDBInit
+        }
+        if let customWorkingDirectory = customWorkingDirectory {
+            dict["customWorkingDirectory"] = customWorkingDirectory
         }
         return dict
     }
@@ -581,7 +672,11 @@ extension Scheme.Test: JSONObjectConvertible {
         } else {
             coverageTargets = []
         }
-        
+
+        enableAddressSanitizer = jsonDictionary.json(atKeyPath: "enableAddressSanitizer") ?? Scheme.Test.enableAddressSanitizerDefault
+        enableASanStackUseAfterReturn = jsonDictionary.json(atKeyPath: "enableASanStackUseAfterReturn") ?? Scheme.Test.enableASanStackUseAfterReturnDefault
+        enableThreadSanitizer = jsonDictionary.json(atKeyPath: "enableThreadSanitizer") ?? Scheme.Test.enableThreadSanitizerDefault
+        enableUBSanitizer = jsonDictionary.json(atKeyPath: "enableUBSanitizer") ?? Scheme.Test.enableUBSanitizerDefault
         disableMainThreadChecker = jsonDictionary.json(atKeyPath: "disableMainThreadChecker") ?? Scheme.Test.disableMainThreadCheckerDefault
         commandLineArguments = jsonDictionary.json(atKeyPath: "commandLineArguments") ?? [:]
         if let targets = jsonDictionary["targets"] as? [Any] {
@@ -607,6 +702,8 @@ extension Scheme.Test: JSONObjectConvertible {
         customLLDBInit = jsonDictionary.json(atKeyPath: "customLLDBInit")
         captureScreenshotsAutomatically = jsonDictionary.json(atKeyPath: "captureScreenshotsAutomatically") ?? Scheme.Test.captureScreenshotsAutomaticallyDefault
         deleteScreenshotsWhenEachTestSucceeds = jsonDictionary.json(atKeyPath: "deleteScreenshotsWhenEachTestSucceeds") ?? Scheme.Test.deleteScreenshotsWhenEachTestSucceedsDefault
+        macroExpansion = jsonDictionary.json(atKeyPath: "macroExpansion")
+        preferredScreenCaptureFormat = jsonDictionary.json(atKeyPath: "preferredScreenCaptureFormat") ?? Scheme.Test.preferredScreenCaptureFormatDefault
     }
 }
 
@@ -623,10 +720,27 @@ extension Scheme.Test: JSONEncodable {
             "language": language,
             "region": region,
             "coverageTargets": coverageTargets.map { $0.reference },
+            "macroExpansion": macroExpansion
         ]
 
         if gatherCoverageData != Scheme.Test.gatherCoverageDataDefault {
             dict["gatherCoverageData"] = gatherCoverageData
+        }
+
+        if enableAddressSanitizer != Scheme.Test.enableAddressSanitizerDefault {
+            dict["enableAddressSanitizer"] = enableAddressSanitizer
+        }
+
+        if enableASanStackUseAfterReturn != Scheme.Test.enableASanStackUseAfterReturnDefault {
+            dict["enableASanStackUseAfterReturn"] = enableASanStackUseAfterReturn
+        }
+
+        if enableThreadSanitizer != Scheme.Test.enableThreadSanitizerDefault {
+            dict["enableThreadSanitizer"] = enableThreadSanitizer
+        }
+
+        if enableUBSanitizer != Scheme.Test.enableUBSanitizerDefault {
+            dict["enableUBSanitizer"] = enableUBSanitizer
         }
 
         if disableMainThreadChecker != Scheme.Test.disableMainThreadCheckerDefault {
@@ -647,6 +761,10 @@ extension Scheme.Test: JSONEncodable {
 
         if deleteScreenshotsWhenEachTestSucceeds != Scheme.Test.deleteScreenshotsWhenEachTestSucceedsDefault {
             dict["deleteScreenshotsWhenEachTestSucceeds"] = deleteScreenshotsWhenEachTestSucceeds
+        }
+
+        if preferredScreenCaptureFormat != Scheme.Test.preferredScreenCaptureFormatDefault {
+            dict["preferredScreenCaptureFormat"] = preferredScreenCaptureFormat.toJSONValue()
         }
 
         return dict
@@ -833,6 +951,7 @@ extension Scheme.Build: JSONObjectConvertible {
         parallelizeBuild = jsonDictionary.json(atKeyPath: "parallelizeBuild") ?? Scheme.Build.parallelizeBuildDefault
         buildImplicitDependencies = jsonDictionary.json(atKeyPath: "buildImplicitDependencies") ?? Scheme.Build.buildImplicitDependenciesDefault
         runPostActionsOnFailure = jsonDictionary.json(atKeyPath: "runPostActionsOnFailure") ?? Scheme.Build.runPostActionsOnFailureDefault
+        buildArchitectures = jsonDictionary.json(atKeyPath: "buildArchitectures") ?? Scheme.Build.buildArchitecturesDefault
     }
 }
 
@@ -855,12 +974,15 @@ extension Scheme.Build: JSONEncodable {
         if runPostActionsOnFailure != Scheme.Build.runPostActionsOnFailureDefault {
             dict["runPostActionsOnFailure"] = runPostActionsOnFailure
         }
+        if buildArchitectures != Scheme.Build.buildArchitecturesDefault {
+            dict["buildArchitectures"] = buildArchitectures.toJSONValue()
+        }
 
         return dict
     }
 }
 
-extension BuildType: JSONPrimitiveConvertible {
+extension BuildType: JSONUtilities.JSONPrimitiveConvertible {
 
     public typealias JSONType = String
 
@@ -892,7 +1014,31 @@ extension BuildType: JSONEncodable {
     }
 }
 
-extension XCScheme.EnvironmentVariable: JSONObjectConvertible {
+extension BuildArchitectures: JSONUtilities.JSONPrimitiveConvertible {
+
+    public typealias JSONType = String
+
+    public static func from(jsonValue: String) -> BuildArchitectures? {
+        switch jsonValue {
+        case "matchRunDestination": return .matchRunDestination
+        case "universal": return .universal
+        case "useTargetSettings": return .useTargetSettings
+        default: return nil
+        }
+    }
+}
+
+extension BuildArchitectures: JSONEncodable {
+    public func toJSONValue() -> Any {
+        switch self {
+        case .matchRunDestination: return "matchRunDestination"
+        case .universal: return "universal"
+        case .useTargetSettings: return "useTargetSettings"
+        }
+    }
+}
+
+extension XCScheme.EnvironmentVariable: JSONUtilities.JSONObjectConvertible {
     public static let enabledDefault = true
 
     private static func parseValue(_ value: Any) -> String {
@@ -975,28 +1121,8 @@ extension XCScheme.LaunchAction.GPUFrameCaptureMode: JSONEncodable {
     }
 }
 
-extension XCScheme.LaunchAction.GPUValidationMode: JSONEncodable {
+extension XCScheme.TestAction.ScreenCaptureFormat: JSONEncodable {
     public func toJSONValue() -> Any {
-        switch self {
-        case .enabled:
-            return "enabled"
-        case .disabled:
-            return "disabled"
-        case .extended:
-            return "extended"
-        }
-    }
-    
-    static func fromJSONValue(_ string: String) -> XCScheme.LaunchAction.GPUValidationMode {
-        switch string {
-        case "enabled":
-            return .enabled
-        case "disabled":
-            return .disabled
-        case "extended":
-            return .extended
-        default:
-            fatalError("Invalid enableGPUValidationMode value. Valid values are: enable, disable, extended")
-        }
+        rawValue
     }
 }

@@ -2,7 +2,6 @@
 
 These are a bunch of real world examples of XcodeGen project specs. Feel free to add your own via PR.
 
-- [num42/RxUserDefaults](https://github.com/num42/RxUserDefaults/blob/master/Examples/CocoaPodsExample.yml)
 - [toshi0383/Bitrise-iOS](https://github.com/toshi0383/Bitrise-iOS/blob/master/project.yml)
 - [johndpope/swift-models](https://github.com/johndpope/swift-models/tree/stable/Inference)
 - [atelier-socle/AppRepositoryTemplate](https://github.com/atelier-socle/AppRepositoryTemplate/blob/master/project.yml)
@@ -12,3 +11,4 @@ These are a bunch of real world examples of XcodeGen project specs. Feel free to
 - [pvinis/react-native-xcodegen](https://github.com/pvinis/react-native-xcodegen/blob/master/templates)
 - [covid19cz/erouska-ios](https://github.com/covid19cz/erouska-ios/blob/develop/project.yml)
 - [markst/hotreloading-vscode-ios](https://github.com/markst/hotreloading-vscode-ios)
+- [MultiPlatformApp](https://github.com/hgq287/HGSwift/tree/master/Examples/MultiPlatformApp) - A modern **SwiftUI** multi-platform (iOS & macOS) example featuring a modular 3-tier architecture and shared logic.

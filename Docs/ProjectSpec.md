@@ -22,11 +22,13 @@ You can also use environment variables in your configuration file, by using `${S
 - [Target](#target)
   - [Product Type](#product-type)
   - [Platform](#platform)
+  - [Supported Destinations](#supported-destinations)
   - [Sources](#sources)
     - [Target Source](#target-source)
   - [Dependency](#dependency)
   - [Config Files](#config-files)
   - [Plist](#plist)
+  - [Build Tool Plug-ins](#build-tool-plug-ins)
   - [Build Script](#build-script)
   - [Build Rule](#build-rule)
   - [Target Scheme](#target-scheme)
@@ -67,7 +69,7 @@ You can also use environment variables in your configuration file, by using `${S
 - [ ] **targets**: **[String: [Target](#target)]** - The list of targets in the project mapped by name
 - [ ] **fileGroups**: **[String]** - A list of paths to add to the root of the project. These aren't files that will be included in your targets, but that you'd like to include in the project hierarchy anyway. For example a folder of xcconfig files that aren't already added by any target sources, or a Readme file.
 - [ ] **schemes**: **[Scheme](#scheme)** - A list of schemes by name. This allows more control over what is found in [Target Scheme](#target-scheme)
-- [ ] **schemeTemplates**: **[String: [Scheme Template](#scheme-template)]** - a list of schemes that can be used as templates for actual schems which reference them via a `template` property. They can be used to extract common scheme settings. Works great in combination with `include`.
+- [ ] **schemeTemplates**: **[String: [Scheme Template](#scheme-template)]** - a list of schemes that can be used as templates for actual schemes which reference them via a `template` property. They can be used to extract common scheme settings. Works great in combination with `include`.
 - [ ] **targetTemplates**: **[String: [Target Template](#target-template)]** - a list of targets that can be used as templates for actual targets which reference them via a `template` property. They can be used to extract common target settings. Works great in combination with `include`.
 - [ ] **packages**: **[String: [Swift Package](#swift-package)]** - a map of Swift packages by name.
 - [ ] **projectReferences**: **[String: [Project Reference](#project-reference)]** - a map of project references by name
@@ -131,6 +133,13 @@ Note that target names can also be changed by adding a `name` property to a targ
 - [ ] **indentWidth**: **Int** - If this is specified, the Xcode project will override the user's setting for indent width in number of spaces.
 - [ ] **tabWidth**: **Int** - If this is specified, the Xcode project will override the user's setting for indent width in number of spaces.
 - [ ] **xcodeVersion**: **String** - The version of Xcode. This defaults to the latest version periodically. You can specify it in the format `0910` or `9.1`
+- [ ] **projectFormat**: **String** - The version of Xcode project. By default this is set to `xcode16_0`
+  - `xcode16_3`: Xcode 16.3
+  - `xcode16_0`: Xcode 16.0
+  - `xcode15_3`: Xcode 15.3
+  - `xcode15_0`: Xcode 15.0
+  - `xcode14_0`: Xcode 14.0
+
 - [ ] **deploymentTarget**: **[[Platform](#platform): String]** - A project wide deployment target can be specified for each platform otherwise the default SDK version in Xcode will be used. This will be overridden by any custom build settings that set the deployment target eg `IPHONEOS_DEPLOYMENT_TARGET`. Target specific deployment targets can also be set with [Target](#target).deploymentTarget.
 - [ ] **disabledValidations**: **[String]** - A list of validations that can be disabled if they're too strict for your use case. By default this is set to an empty array. Currently these are the available options:
   - `missingConfigs`: Disable errors for configurations in yaml files that don't exist in the project itself. This can be useful if you include the same yaml file in different projects
@@ -145,12 +154,16 @@ Note that target names can also be changed by adding a `name` property to a targ
 - [ ] **transitivelyLinkDependencies**: **Bool** - If this is `true` then targets will link to the dependencies of their target dependencies. If a target should embed its dependencies, such as application and test bundles, it will embed these transitive dependencies as well. Some complex setups might want to set this to `false` and explicitly specify dependencies at every level. Targets can override this with [Target](#target).transitivelyLinkDependencies. Defaults to `false`.
 - [ ] **generateEmptyDirectories**: **Bool** - If this is `true` then empty directories will be added to project too else will be missed. Defaults to `false`.
 - [ ] **findCarthageFrameworks**: **Bool** - When this is set to `true`, all the individual frameworks for Carthage framework dependencies will automatically be found. This property can be overridden individually for each carthage dependency - for more details see See **findFrameworks** in the [Dependency](#dependency) section. Defaults to `false`.
-- [ ] **localPackagesGroup**: **String** - The group name that local packages are put into. This defaults to `Packages`
+- [ ] **localPackagesGroup**: **String** - The group name that local packages are put into. This defaults to `Packages`. Use `""` to specify the project root.
 - [ ] **fileTypes**: **[String: [FileType](#filetype)]** - A list of default file options for specific file extensions across the project. Values in [Sources](#sources) will overwrite these settings.
 - [ ] **preGenCommand**: **String** - A bash command to run before the project has been generated. If the project isn't generated due to no changes when using the cache then this won't run. This is useful for running things like generating resources files before the project is regenerated.
 - [ ] **postGenCommand**: **String** - A bash command to run after the project has been generated. If the project isn't generated due to no changes when using the cache then this won't run. This is useful for running things like `pod install` only if the project is actually regenerated.
 - [ ] **useBaseInternationalization**: **Bool** If this is `false` and your project does not include resources located in a **Base.lproj** directory then `Base` will not be included in the projects 'known regions'. The default value is `true`. 
 - [ ] **schemePathPrefix**: **String** - A path prefix for relative paths in schemes, such as StoreKitConfiguration. The default is `"../../"`, which is suitable for non-workspace projects. For use in workspaces, use `"../"`.
+- [ ] **defaultSourceDirectoryType**: **String** - When a [Target source](#target-source) doesn't specify a type and is a directory, this is the type that will be used. If nothing is specified for either then `group` will be used.
+  - `group` (default)
+  - `folder`
+  - `syncedFolder`: Can be used starting from **projectFormat** `xcode16_0`
 
 ```yaml
 options:
@@ -196,6 +209,7 @@ Default settings for file extensions. See [Sources](#sources) for more documenta
     - `Symbolic`: symbolic breakpoint
     - `IDEConstraintError`: IDE constraint breakpoint
     - `IDETestFailure`: IDE test failure breakpoint
+    - `RuntimeIssue`: Runtime issue breakpoint
 - [ ] **enabled**: **Bool** - Indicates whether it should be active. Default to `true`
 - [ ] **ignoreCount**: **Int** - Indicates how many times it should be ignored before stopping, Default to `0`
 - [ ] **continueAfterRunningActions**: **Bool** - Indicates if should automatically continue after evaluating actions, Default to `false`
@@ -354,6 +368,7 @@ Settings are merged in the following order: `groups`, `base`, `configs` (simple 
 
 - [x] **type**: **[Product Type](#product-type)** - Product type of the target
 - [x] **platform**: **[Platform](#platform)** - Platform of the target
+- [ ] **supportedDestinations**: **[[Supported Destinations](#supported-destinations)]** - List of supported platform destinations for the target.
 - [ ] **deploymentTarget**: **String** - The deployment target (eg `9.2`). If this is not specified the value from the project set in [Options](#options)`.deploymentTarget.PLATFORM` will be used.
 - [ ] **sources**: **[Sources](#sources)** - Source directories of the target
 - [ ] **configFiles**: **[Config Files](#config-files)** - `.xcconfig` files per config
@@ -380,6 +395,7 @@ Settings are merged in the following order: `groups`, `base`, `configs` (simple 
 - [ ] **directlyEmbedCarthageDependencies**: **Bool** - If this is `true` Carthage framework dependencies will be embedded using an `Embed Frameworks` build phase instead of the `copy-frameworks` script. Defaults to `true` for all targets except iOS/tvOS/watchOS Applications.
 - [ ] **requiresObjCLinking**: **Bool** - If this is `true` any targets that link to this target will have `-ObjC` added to their `OTHER_LDFLAGS`. This is required if a static library has any categories or extensions on Objective-C code. See [this guide](https://pewpewthespells.com/blog/objc_linker_flags.html#objc) for more details. Defaults to `true` if `type` is `library.static`. If you are 100% sure you don't have categories or extensions on Objective-C code (pure Swift with no use of Foundation/UIKit) you can set this to `false`, otherwise it's best to leave it alone.
 - [ ] **onlyCopyFilesOnInstall**: **Bool** – If this is `true`, the `Embed Frameworks` and `Embed App Extensions` (if available) build phases will have the "Copy only when installing" chekbox checked. Defaults to `false`.
+- [ ] **buildToolPlugins**: **[[Build Tool Plug-ins](#build-tool-plug-ins)]** - Commands for the build system that run automatically *during* the build.
 - [ ] **preBuildScripts**: **[[Build Script](#build-script)]** - Build scripts that run *before* any other build phases
 - [ ] **postCompileScripts**: **[[Build Script](#build-script)]** - Build scripts that run after the Compile Sources phase
 - [ ] **postBuildScripts**: **[[Build Script](#build-script)]** - Build scripts that run *after* any other build phases
@@ -430,10 +446,14 @@ This will provide default build settings for a certain product type. It can be a
 
 This will provide default build settings for a certain platform. It can be any of the following:
 
+- `auto` (available only when we use `supportedDestinations`)
 - `iOS`
-- `macOS`
 - `tvOS`
+- `macOS`
 - `watchOS`
+- `visionOS` (`visionOS` doesn't support Carthage usage)
+
+Note that when we use supported destinations with Xcode 14+ we can avoid the definition of platform that fallbacks to the `auto` value.
 
 **Multi Platform targets**
 
@@ -465,6 +485,34 @@ targets:
 
 The above will generate 2 targets named `MyFramework_iOS` and `MyFramework_tvOS`, with all the relevant platform build settings. They will both have a `PRODUCT_NAME` of `MyFramework`
 
+### Supported Destinations
+
+This will provide a mix of default build settings for the chosen platform destinations. It can be any of the following:
+
+- `iOS`
+- `tvOS`
+- `macOS`
+- `macCatalyst`
+- `visionOS`
+- `watchOS`
+
+```yaml
+targets:
+  MyFramework:
+    type: framework
+    supportedDestinations: [iOS, tvOS]
+    deploymentTarget:
+      iOS: 9.0
+      tvOS: 10.0
+    sources:
+      - path: MySources
+        inferDestinationFiltersByPath: true
+      - path: OtherSources
+        destinationFilters: [iOS]
+```
+
+Note that the definition of supported destinations can be applied to almost every type of bundle making everything more easy to manage (app targets, unit tests, UI tests etc). App targets currently do not support the watchOS destination. Create a separate target using `platform` for watchOS apps. See Apple's [Configuring a multiplatform app](https://developer.apple.com/documentation/xcode/configuring-a-multiplatform-app-target) for details.
+
 ### Sources
 
 Specifies the source directories for a target. This can either be a single source or a list of sources. Applicable source files, resources, headers, and `.lproj` files will be parsed appropriately.
@@ -479,7 +527,10 @@ A source can be provided via a string (the path) or an object of the form:
 - [ ] **compilerFlags**: **[String]** or **String** - A list of compilerFlags to add to files under this specific path provided as a list or a space delimited string. Defaults to empty.
 - [ ] **excludes**: **[String]** - A list of [global patterns](https://en.wikipedia.org/wiki/Glob_(programming)) representing the files to exclude. These rules are relative to `path` and _not the directory where `project.yml` resides_. XcodeGen uses Bash 4's Glob behaviors where globstar (**) is enabled.
 - [ ] **includes**: **[String]** - A list of global patterns in the same format as `excludes` representing the files to include. These rules are relative to `path` and _not the directory where `project.yml` resides_. If **excludes** is present and file conflicts with **includes**, **excludes** will override the **includes** behavior.
-- [ ] **createIntermediateGroups**: **Bool** - This overrides the value in [Options](#options)
+- [ ] **explicitFolders**: **[String]** - Only valid for `syncedFolder` type. A list of global patterns in the same format as `excludes` to child folders that Xcode should treat as folder references.
+- [ ] **destinationFilters**: **[[Supported Destinations](#supported-destinations)]** - List of supported platform destinations the files should filter to. Defaults to all supported destinations.
+- [ ] **inferDestinationFiltersByPath**: **Bool** - This is a convenience filter that helps you to filter the files if their paths match these patterns `**/<supportedDestination>/*` or `*_<supportedDestination>.swift`. Note, if you use `destinationFilters` this flag will be ignored.
+- [ ] **createIntermediateGroups**: **Bool** - This overrides the value in [Options](#options).
 - [ ] **optional**: **Bool** - Disable missing path check. Defaults to false.
 - [ ] **buildPhase**: **String** - This manually sets the build phase this file or files in this directory will be added to, otherwise XcodeGen will guess based on the file extension. Note that `Info.plist` files will never be added to any build phases, no matter what this setting is. Possible values are:
 	- `sources` - Compile Sources phase
@@ -503,6 +554,7 @@ A source can be provided via a string (the path) or an object of the form:
 	- `file`: a file reference with a parent group will be created (Default for files or directories with extensions)
 	- `group`: a group with all it's containing files. (Default for directories without extensions)
 	- `folder`: a folder reference.
+	- `syncedFolder`: Xcode 16's synchronized folders, also knows as buildable folders
 - [ ] **headerVisibility**: **String** - The visibility of any headers. This defaults to `public`, but can be either:
 	- `public`
 	- `private`
@@ -515,9 +567,11 @@ targets:
   MyTarget:
     sources: MyTargetSource
   MyOtherTarget:
+    supportedDestinations: [iOS, tvOS]
     sources:
       - MyOtherTargetSource1
       - path: MyOtherTargetSource2
+        inferDestinationFiltersByPath: true
         name: MyNewName
         excludes:
           - "ios/*.[mh]"
@@ -529,6 +583,7 @@ targets:
           - "-Werror"
           - "-Wextra"
       - path: MyOtherTargetSource3
+        destinationFilters: [iOS]
         compilerFlags: "-Werror -Wextra"
       - path: ModuleMaps
         buildPhase:
@@ -556,10 +611,11 @@ A dependency can be one of a 6 types:
 
 - [ ] **embed**: **Bool** - Whether to embed the dependency. Defaults to true for application target and false for non application targets.
 - [ ] **link**: **Bool** - Whether to link the dependency. Defaults to `true` depending on the type of the dependency and the type of the target (e.g. static libraries will only link to executables by default).
-- [ ] **codeSign**: **Bool** - Whether the `codeSignOnCopy` setting is applied when embedding framework. Defaults to true
-- [ ] **removeHeaders**: **Bool** - Whether the `removeHeadersOnCopy` setting is applied when embedding the framework. Defaults to true
-- [ ] **weak**: **Bool** - Whether the `Weak` setting is applied when linking the framework. Defaults to false
-- [ ] **platformFilter**: **String** - This field is specific to Mac Catalyst. It corresponds to the "Platforms" dropdown in the Frameworks & Libraries section of Target settings in Xcode. Available options are: **iOS**, **macOS** and **all**. Defaults is **all**
+- [ ] **codeSign**: **Bool** - Whether the `codeSignOnCopy` setting is applied when embedding framework. Defaults to true.
+- [ ] **removeHeaders**: **Bool** - Whether the `removeHeadersOnCopy` setting is applied when embedding the framework. Defaults to true.
+- [ ] **weak**: **Bool** - Whether the `Weak` setting is applied when linking the framework. Defaults to false.
+- [ ] **platformFilter**: **String** - This field is specific to Mac Catalyst. It corresponds to the "Platforms" dropdown in the Frameworks & Libraries section of Target settings in Xcode. Available options are: **iOS**, **macOS** and **all**. Defaults is **all**.
+- [ ] **destinationFilters**: **[[Supported Destinations](#supported-destinations)]** - List of supported platform destinations this dependency should filter to. Defaults to all supported destinations.
 - [ ] **platforms**: **[[Platform](#platform)]** - List of platforms this dependency should apply to. Defaults to all applicable platforms.
 - **copy** - Copy Files Phase for this dependency. This only applies when `embed` is true. Must be specified as an object with the following fields:
     - [x] **destination**: **String** - Destination of the Copy Files phase. This can be one of the following values:
@@ -609,13 +665,17 @@ projectReferences:
     path: path/to/FooLib.xcodeproj
 targets:
   MyTarget:
+    supportedDestinations: [iOS, tvOS]
     dependencies:
       - target: MyFramework
+        destinationFilters: [iOS]
       - target: FooLib/FooTarget
       - framework: path/to/framework.framework
+        destinationFilters: [tvOS]
       - carthage: Result
         findFrameworks: false
         linkType: static
+        destinationFilters: [iOS]
       - sdk: Contacts.framework
       - sdk: libc++.tbd
       - sdk: libz.dylib
@@ -641,7 +701,8 @@ targets:
 ```
 
 **Package dependency**
-- [ ] **product**: **String** - The product to use from the package. This defaults to the package name, so is only required if a Package has multiple libraries or a library with a differing name
+- [ ] **product**: **String** - The product to use from the package. This defaults to the package name, so is only required if a Package has multiple libraries or a library with a differing name. Use this over `products` when you want to define different linking options per product.
+- [ ] **products**: **String** - A list of products to use from the package. This can be used when depending on multiple products from a package.
 
 ```yaml
 packages:
@@ -657,6 +718,21 @@ targets:
       - package: Yams 
       - package: SwiftPM
         product: SPMUtility
+```
+
+Depending on multiple products from a package:
+
+```yaml
+packages:
+  FooFeature:
+    path: Packages/FooFeature
+targets:
+  App:
+    dependencies:
+      - package: FooFeature
+        products:
+          - FooDomain
+          - FooUI
 ```
 
 ### Config Files
@@ -693,6 +769,36 @@ targets:
         com.apple.security.application-groups: group.com.app
 ```
 
+### Build Tool Plug-ins
+
+To add `Build Tool Plug-ins`, you need to add information about plugins to [Target](#target):
+
+- **buildToolPlugins**: List of plugins to connect to the target
+
+Each plugin includes information:
+
+- [x] **plugin**: **String** - plugin name 
+- [x] **package**: **String** - the name of the package that contains the plugin
+
+Сonnect the plugin to the desired target:
+
+```yaml
+targets:
+  App:
+    buildToolPlugins:
+      - plugin: MyPlugin
+        package: MyPackage
+```
+
+Don't forget to add a package containing the plugin we need:
+
+```yaml
+packages:
+  MyPackage:
+    url: https://github.com/MyPackage
+    from: 1.3.0
+```
+
 ### Build Script
 
 Run script build phases can be added at 3 different points in the build:
@@ -711,9 +817,9 @@ Each script can contain:
 - [ ] **inputFileLists**: **[String]** - list of input .xcfilelist
 - [ ] **outputFileLists**: **[String]** - list of output .xcfilelist
 - [ ] **shell**: **String** - shell used for the script. Defaults to `/bin/sh`
-- [ ] **showEnvVars**: **Bool** - whether the environment variables accessible to the script show be printed to the build log. Defaults to yes
-- [ ] **runOnlyWhenInstalling**: **Bool** - whether the script is only run when installing (`runOnlyForDeploymentPostprocessing`). Defaults to no
-- [ ] **basedOnDependencyAnalysis**: **Bool** - whether to skip the script if inputs, context, or outputs haven't changed. Defaults to yes
+- [ ] **showEnvVars**: **Bool** - whether the environment variables accessible to the script show be printed to the build log. Defaults to `true`
+- [ ] **runOnlyWhenInstalling**: **Bool** - whether the script is only run when installing (`runOnlyForDeploymentPostprocessing`). Defaults to `false`
+- [ ] **basedOnDependencyAnalysis**: **Bool** - whether to skip the script if inputs, context, or outputs haven't changed. Defaults to `true`
 - [ ] **discoveredDependencyFile**: **String** - discovered dependency .d file. Defaults to none
 
 Either a **path** or **script** must be defined, the rest are optional.
@@ -785,7 +891,9 @@ This is a convenience used to automatically generate schemes for a target based 
 - [ ] **coverageTargets**: **[[Testable Target Reference](#testable-target-reference) - a list of targets to gather code coverage. Each entry can either be a simple string, a string using [Project Reference](#project-reference) or [Testable Target Reference](#testable-target-reference)
 - [ ] **disableMainThreadChecker**: **Bool** - a boolean that indicates if this scheme should disable the Main Thread Checker. This defaults to false
 - [ ] **stopOnEveryMainThreadCheckerIssue**: **Bool** - a boolean that indicates if this scheme should stop at every Main Thread Checker issue. This defaults to false
+- [ ] **disableThreadPerformanceChecker**: **Bool** - a boolean that indicates if this scheme should disable the Thread Performance Checker. This defaults to false
 - [ ] **buildImplicitDependencies**: **Bool** - Flag to determine if Xcode should build implicit dependencies of this scheme. By default this is `true` if not set.
+- [ ] **buildArchitectures**: **String** - Overrides the architectures built for all targets in the scheme. Supported values are `matchRunDestination`, `universal`, and `useTargetSettings`. By default this is `matchRunDestination` if not set. See [Build](#build) for details.
 - [ ] **language**: **String** - a String that indicates the language used for running and testing. This defaults to nil
 - [ ] **region**: **String** - a String that indicates the region used for running and testing. This defaults to nil
 - [ ] **commandLineArguments**: **[String:Bool]** - a dictionary from the argument name (`String`) to if it is enabled (`Bool`). These arguments will be added to the Test, Profile and Run scheme actions
@@ -851,6 +959,7 @@ This is used to override settings or run build scripts in specific targets
 - [x] **targets**: **[String]** - The list of target names to include as target dependencies
 - [ ] **configFiles**: **[Config Files](#config-files)** - `.xcconfig` files per config
 - [ ] **settings**: **[Settings](#settings)** - Target specific build settings.
+- [ ] **buildToolPlugins**: **[[Build Tool Plug-ins](#build-tool-plug-ins)]** - Commands for the build system that run automatically *during* the build
 - [ ] **buildScripts**: **[[Build Script](#build-script)]** - Build scripts to run
 - [ ] **scheme**: **[Target Scheme](#target-scheme)** - Generated scheme
 - [ ] **attributes**: **[String: Any]** - This sets values in the project `TargetAttributes`. It is merged with `attributes` from the project and anything automatically added by XcodeGen, with any duplicate values being override by values specified here
@@ -911,6 +1020,10 @@ Schemes allows for more control than the convenience [Target Scheme](#target-sch
 - [ ] **runPostActionsOnFailure**: **Bool** - Flag to determine if Xcode should run post scripts despite failure build. By default this is `false` if not set.
 - `true`: Run post scripts even if build is failed
 - `false`: Only run post scripts if build success
+- [ ] **buildArchitectures**: **String** - Overrides the architectures built for all targets in the scheme. This is the "Override Architectures" build option in Xcode's scheme editor. By default this is `matchRunDestination` if not set, which matches Xcode's default for new schemes.
+  - `matchRunDestination`: Only build the architecture of the run destination ("Match Run Destination")
+  - `universal`: Build all standard architectures ("Universal")
+  - `useTargetSettings`: Use the architecture build settings of each target, such as `ONLY_ACTIVE_ARCH` ("Use Target Settings")
 
 
 ```yaml
@@ -919,6 +1032,7 @@ targets:
   FooLib/FooTarget: [test, run]
 parallelizeBuild: true
 buildImplicitDependencies: true
+buildArchitectures: matchRunDestination
 ```
 
 ### Common Build Action options
@@ -933,9 +1047,10 @@ The different actions share some properties:
 - [ ] **postActions**: **[[Execution Action](#execution-action)]** - Scripts that are run *after* the action
 - [ ] **environmentVariables**: **[[Environment Variable](#environment-variable)]** or **[String:String]** - `run`, `test` and `profile` actions can define the environment variables. When passing a dictionary, every key-value entry maps to a corresponding variable that is enabled.
 - [ ] **enableGPUFrameCaptureMode**: **GPUFrameCaptureMode** - Property value set for `GPU Frame Capture`. Possible values are `autoEnabled`, `metal`, `openGL`, `disabled`. Default is `autoEnabled`.
-- [ ] **enableGPUValidationMode**: **GPUValidationMode** - Property value set for `Metal API Validation`. Possible values are `enabled`, `disabled`, `extended`. Default is `enabled`.
+- [ ] **enableGPUValidationMode**: **Bool** - Property value set for `Metal API Validation`. This defaults to true.
 - [ ] **disableMainThreadChecker**: **Bool** - `run` and `test` actions can define a boolean that indicates that this scheme should disable the Main Thread Checker. This defaults to false
 - [ ] **stopOnEveryMainThreadCheckerIssue**: **Bool** - a boolean that indicates if this scheme should stop at every Main Thread Checker issue. This defaults to false
+- [ ] **disableThreadPerformanceChecker**: **Bool** - `run` action can define a boolean that indicates that this scheme should disable the Thread Performance Checker. This defaults to false
 - [ ] **language**: **String** - `run` and `test` actions can define a language that is used for Application Language
 - [ ] **region**: **String** - `run` and `test` actions can define a language that is used for Application Region
 - [ ] **debugEnabled**: **Bool** - `run` and `test` actions can define a whether debugger should be used. This defaults to true.
@@ -943,7 +1058,7 @@ The different actions share some properties:
 - [ ] **askForAppToLaunch**: **Bool** - `run` and `profile` actions can define the executable set to ask to launch. This defaults to false.
 - [ ] **launchAutomaticallySubstyle**: **String** - `run` action can define the launch automatically substyle ('2' for extensions).
 - [ ] **storeKitConfiguration**: **String** - `run` action can specify a storekit configuration. See [Options](#options).
-- [ ] **macroExpansion**: **String** - `run` action can define the macro expansion from other target. This defaults to nil.
+- [ ] **macroExpansion**: **String** - `run` and `test` actions can define the macro expansion from other target. This defaults to nil.
 
 ### Execution Action
 
@@ -958,6 +1073,7 @@ A multiline script can be written using the various YAML multiline methods, for 
 ### Run Action
 - [ ] **executable**: **String** - the name of the target to launch as an executable. Defaults to the first runnable build target in the scheme, or the first build target if a runnable build target is not found
 - [ ] **customLLDBInit**: **String** - the absolute path to the custom `.lldbinit` file
+- [ ] **customWorkingDirectory**: **String** - a path to use as the working directory when launching the executable.
 
 ### Test Action
 
@@ -968,6 +1084,7 @@ A multiline script can be written using the various YAML multiline methods, for 
 - [ ] **captureScreenshotsAutomatically**: **Bool** - indicates whether screenshots should be captured automatically while UI Testing. This defaults to true.
 - [ ] **deleteScreenshotsWhenEachTestSucceeds**: **Bool** - whether successful UI tests should cause automatically-captured screenshots to be deleted. If `captureScreenshotsAutomatically` is false, this value is ignored. This defaults to true.
 - [ ] **testPlans**:  **[[Test Plan](#test-plan)]** - List of test plan locations that will be referenced in the scheme.
+- [ ] **preferredScreenCaptureFormat**: **String** - automatic screen capture format to use while UI Testing. Possible values are `screenshots`, `screenRecording`. Default is `screenRecording`.
 
 #### Test Target
 A target can be one of a 2 types:
@@ -975,7 +1092,7 @@ A target can be one of a 2 types:
 - **name**: **String** - The name of the target.
 - **target**: **[Testable Target Reference](#testable-target-reference)** - The information of the target. You can specify more detailed information than `name:`.
 
-As syntax suger, you can also specify **[Testable Target Reference](#testable-target-reference)** without `target`.
+As syntax sugar, you can also specify **[Testable Target Reference](#testable-target-reference)** without `target`.
 
 #### Other Parameters
 
@@ -1045,12 +1162,16 @@ schemes:
         MyTarget2: [run, archive]
     run:
       config: prod-debug
-      commandLineArguments: "--option value"
+      commandLineArguments:
+        "-MyEnabledArg": true
+        "-MyDisabledArg": false
       environmentVariables:
         RUN_ENV_VAR: VALUE
     test:
       config: prod-debug
-      commandLineArguments: "--option testValue"
+      commandLineArguments:
+        "-MyEnabledArg": true
+        "-MyDisabledArg": false
       gatherCoverageData: true
       coverageTargets:
         - MyTarget1
@@ -1141,25 +1262,35 @@ Swift packages are defined at a project level, and then linked to individual tar
   - `branch: master`
   - `revision: xxxxxx`
 - [ ] **github** : **String**- this is an optional helper you can use for github repos. Instead of specifying the full url in `url` you can just specify the github org and repo
+- [ ] **traits**: **[String]** - Optional Swift package traits to enable for this package reference. Trait names are written to the Xcode project in the specified order.
   
 ### Local Package
 
 - [x] **path**: **String** - the path to the package in local. The path must be directory with a `Package.swift`.
-- [ ] **group** : **String**- Optional path that specifies the location where the package will live in your xcode project.
+- [ ] **group** : **String**- Optional path that specifies the location where the package will live in your xcode project. Use `""` to specify the project root.
+- [ ] **excludeFromProject** : **String**- Optional flag to exclude the package from the generated project (useful if the package is already added via xcworkspace and the project is not intended for standalone use), defaults to `false`
+- [ ] **traits**: **[String]** - Optional Swift package traits to enable for this package reference. Use the top-level `packages` mapping because the legacy `localPackages` syntax cannot specify traits.
 
 ```yml
 packages:
   Yams:
     url: https://github.com/jpsim/Yams
     from: 2.0.0
+    traits:
+      - StrictConcurrency
   Ink:
     github: JohnSundell/Ink
     from: 0.5.0
+  Sentry:
+    path: ../..
+    traits:
+      - NoUIFramework
   RxClient:
     path: ../RxClient
   AppFeature:
     path: ../Packages
     group: Domains/AppFeature
+    excludeFromProject: false
 ```
 
 ## Project Reference

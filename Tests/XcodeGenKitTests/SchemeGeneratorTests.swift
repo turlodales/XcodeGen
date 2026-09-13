@@ -41,7 +41,8 @@ private let uiTest = Target(
 
 class SchemeGeneratorTests: XCTestCase {
 
-    func testSchemes() {
+    func testSchemes() throws {
+        try skipIfNecessary()
         describe {
 
             let buildTarget = Scheme.BuildTarget(target: .local(app.name))
@@ -52,7 +53,7 @@ class SchemeGeneratorTests: XCTestCase {
                 let scheme = try Scheme(
                     name: "MyScheme",
                     build: Scheme.Build(targets: [buildTarget], preActions: [preAction]),
-                    run: Scheme.Run(config: "Debug", enableGPUFrameCaptureMode: .metal, askForAppToLaunch: true, launchAutomaticallySubstyle: "2", simulateLocation: simulateLocation, storeKitConfiguration: storeKitConfiguration, customLLDBInit: "/sample/.lldbinit"),
+                    run: Scheme.Run(config: "Debug", enableGPUFrameCaptureMode: .metal, askForAppToLaunch: true, launchAutomaticallySubstyle: "2", simulateLocation: simulateLocation, storeKitConfiguration: storeKitConfiguration, customLLDBInit: "/sample/.lldbinit", customWorkingDirectory: "/test"),
                     test: Scheme.Test(config: "Debug", targets: [
                         Scheme.Test.TestTarget(targetReference: TestableTargetReference(framework.name), location: "test.gpx"),
                         Scheme.Test.TestTarget(targetReference: TestableTargetReference(framework.name), location: "New York, NY, USA")
@@ -73,6 +74,7 @@ class SchemeGeneratorTests: XCTestCase {
                 try expect(xcscheme.buildAction?.buildImplicitDependencies) == true
                 try expect(xcscheme.buildAction?.parallelizeBuild) == true
                 try expect(xcscheme.buildAction?.runPostActionsOnFailure) == false
+                try expect(xcscheme.buildAction?.buildArchitectures) == .matchRunDestination
                 try expect(xcscheme.buildAction?.preActions.first?.title) == "Script"
                 try expect(xcscheme.buildAction?.preActions.first?.scriptText) == "echo Starting"
                 try expect(xcscheme.buildAction?.preActions.first?.environmentBuildable?.buildableName) == "MyApp.app"
@@ -113,12 +115,37 @@ class SchemeGeneratorTests: XCTestCase {
                 try expect(xcscheme.launchAction?.enableGPUFrameCaptureMode) == .metal
                 try expect(xcscheme.testAction?.customLLDBInitFile) == "/test/.lldbinit"
                 try expect(xcscheme.testAction?.systemAttachmentLifetime).to.beNil()
-                
+
+                try expect(xcscheme.launchAction?.useCustomWorkingDirectory) == true
+                try expect(xcscheme.launchAction?.customWorkingDirectory) == "/test"
+
                 try expect(xcscheme.testAction?.testables[0].locationScenarioReference?.referenceType) == "0"
                 try expect(xcscheme.testAction?.testables[0].locationScenarioReference?.identifier) == "../test.gpx"
                 
                 try expect(xcscheme.testAction?.testables[1].locationScenarioReference?.referenceType) == "1"
                 try expect(xcscheme.testAction?.testables[1].locationScenarioReference?.identifier) == "New York, NY, USA"
+            }
+
+            $0.it("generates scheme build architecture overrides") {
+                let architectureOptions: [(String, XCScheme.BuildAction.Architectures)] = [
+                    ("matchRunDestination", .matchRunDestination),
+                    ("universal", .universal),
+                    ("useTargetSettings", .useTargetSettings),
+                ]
+
+                for (option, expected) in architectureOptions {
+                    let scheme = try Scheme(name: "MyScheme", jsonDictionary: [
+                        "build": [
+                            "targets": [app.name: "all"],
+                            "buildArchitectures": option,
+                        ],
+                    ])
+                    let project = Project(name: "test", targets: [app, framework], schemes: [scheme])
+                    let xcodeProject = try project.generateXcodeProject()
+                    let xcscheme = try unwrap(xcodeProject.sharedData?.schemes.first)
+
+                    try expect(xcscheme.buildAction?.buildArchitectures) == expected
+                }
             }
 
             let frameworkTarget = Scheme.BuildTarget(target: .local(framework.name), buildTypes: [.archiving])
@@ -327,6 +354,21 @@ class SchemeGeneratorTests: XCTestCase {
                 try expect(xcscheme.testAction?.postActions.count) == 0
             }
 
+            $0.it("generates build architectures for target schemes") {
+                let architectureOptions: [BuildArchitectures?] = [nil, .universal, .useTargetSettings]
+
+                for option in architectureOptions {
+                    var target = app
+                    target.scheme = option.map { TargetScheme(buildArchitectures: $0) } ?? TargetScheme()
+
+                    let project = Project(name: "test", targets: [target, framework])
+                    let xcodeProject = try project.generateXcodeProject()
+                    let xcscheme = try unwrap(xcodeProject.sharedData?.schemes.first)
+
+                    try expect(xcscheme.buildAction?.buildArchitectures) == option ?? .matchRunDestination
+                }
+            }
+
             $0.it("generates target schemes with code coverage options") {
                 var target = app
                 target.scheme = try TargetScheme(
@@ -405,7 +447,7 @@ class SchemeGeneratorTests: XCTestCase {
                     name: "test",
                     targets: [framework],
                     schemes: [scheme],
-                    packages: ["XcodeGen": .local(path: "../", group: nil)],
+                    packages: ["XcodeGen": .local(path: "../", group: nil, excludeFromProject: false)],
                     projectReferences: [
                         ProjectReference(name: "TestProject", path: externalProject.string),
                     ]
@@ -476,9 +518,84 @@ class SchemeGeneratorTests: XCTestCase {
                 let xcodeProject = try project.generateXcodeProject()
 
                 let xcscheme = try unwrap(xcodeProject.sharedData?.schemes.first)
+                try expect(xcscheme.testAction?.macroExpansion?.buildableName) == "MyApp.app"
+                try expect(xcscheme.launchAction?.macroExpansion?.buildableName) == "MyApp.app"
+            }
+
+            $0.it("allows to override test macroExpansion") {
+                let app = Target(
+                    name: "MyApp",
+                    type: .application,
+                    platform: .iOS,
+                    dependencies: [Dependency(type: .target, reference: "MyAppExtension", embed: false)]
+                )
+
+                let `extension` = Target(
+                    name: "MyAppExtension",
+                    type: .appExtension,
+                    platform: .iOS
+                )
+                let appTarget = Scheme.BuildTarget(target: .local(app.name), buildTypes: [.running])
+                let extensionTarget = Scheme.BuildTarget(target: .local(`extension`.name), buildTypes: [.running])
+            
+                let scheme = Scheme(
+                    name: "TestScheme",
+                    build: Scheme.Build(targets: [appTarget, extensionTarget]),
+                    run: Scheme.Run(config: "Debug", macroExpansion: "MyApp"),
+                    test: .init(macroExpansion: "MyAppExtension")
+                )
+                let project = Project(
+                    name: "test",
+                    targets: [app, `extension`],
+                    schemes: [scheme]
+                )
+                let xcodeProject = try project.generateXcodeProject()
+
+                let xcscheme = try unwrap(xcodeProject.sharedData?.schemes.first)
+                try expect(xcscheme.testAction?.macroExpansion?.buildableName) == "MyAppExtension.appex"
                 try expect(xcscheme.launchAction?.macroExpansion?.buildableName) == "MyApp.app"
             }
             
+            $0.it("generates scheme with macroExpansion from tests when the main target is not part of the scheme") {
+                let app = Target(
+                    name: "MyApp",
+                    type: .application,
+                    platform: .iOS,
+                    dependencies: []
+                )
+
+                let mockApp = Target(
+                    name: "MockApp",
+                    type: .application,
+                    platform: .iOS,
+                    dependencies: []
+                )
+
+                let testBundle = Target(
+                    name: "TestBundle",
+                    type: .unitTestBundle,
+                    platform: .iOS
+                )
+                let appTarget = Scheme.BuildTarget(target: .local(app.name), buildTypes: [.running])
+                let mockAppTarget = Scheme.BuildTarget(target: .local(mockApp.name), buildTypes: [.testing])
+                let testBundleTarget = Scheme.BuildTarget(target: .local(testBundle.name), buildTypes: [.testing])
+
+                let scheme = Scheme(
+                    name: "TestScheme",
+                    build: Scheme.Build(targets: [appTarget, mockAppTarget, testBundleTarget]),
+                    run: Scheme.Run(config: "Debug", macroExpansion: "MyApp")
+                )
+                let project = Project(
+                    name: "test",
+                    targets: [app, mockApp, testBundle],
+                    schemes: [scheme]
+                )
+                let xcodeProject = try project.generateXcodeProject()
+
+                let xcscheme = try unwrap(xcodeProject.sharedData?.schemes.first)
+                try expect(xcscheme.testAction?.macroExpansion?.buildableName) == "MockApp.app"
+            }
+
             $0.it("generates scheme with test target of local swift package") {
                 let targetScheme = TargetScheme(
                     testTargets: [Scheme.Test.TestTarget(targetReference: TestableTargetReference(name: "XcodeGenKitTests", location: .package("XcodeGen")))])
@@ -487,14 +604,14 @@ class SchemeGeneratorTests: XCTestCase {
                     type: .application,
                     platform: .iOS,
                     dependencies: [
-                        Dependency(type: .package(product: nil), reference: "XcodeGen")
+                        Dependency(type: .package(products: []), reference: "XcodeGen")
                     ],
                     scheme: targetScheme
                 )
                 let project = Project(
                     name: "ios_test",
                     targets: [app],
-                    packages: ["XcodeGen": .local(path: "../", group: nil)]
+                    packages: ["XcodeGen": .local(path: "../", group: nil, excludeFromProject: false)]
                 )
                 let xcodeProject = try project.generateXcodeProject()
                 let xcscheme = try unwrap(xcodeProject.sharedData?.schemes.first)
@@ -567,6 +684,42 @@ class SchemeGeneratorTests: XCTestCase {
                     .init(reference: "container:\(testPlanPath1)", default: false),
                     .init(reference: "container:\(testPlanPath2)", default: true),
                 ]
+            }
+
+            $0.it("generates scheme with screenshots as preferred screen capture format") {
+                let scheme = Scheme(
+                    name: "MyScheme",
+                    build: Scheme.Build(targets: [buildTarget]),
+                    run: Scheme.Run(config: "Debug"),
+                    test: Scheme.Test(config: "Debug", preferredScreenCaptureFormat: .screenshots)
+                )
+                let project = Project(
+                    name: "test",
+                    targets: [app, framework],
+                    schemes: [scheme]
+                )
+                let xcodeProject = try project.generateXcodeProject()
+
+                let xcscheme = try unwrap(xcodeProject.sharedData?.schemes.first)
+                try expect(xcscheme.testAction?.preferredScreenCaptureFormat) == .screenshots
+            }
+
+            $0.it("generates scheme with screen recording as preferred screen capture format") {
+                let scheme = Scheme(
+                    name: "MyScheme",
+                    build: Scheme.Build(targets: [buildTarget]),
+                    run: Scheme.Run(config: "Debug"),
+                    test: Scheme.Test(config: "Debug", preferredScreenCaptureFormat: .screenRecording)
+                )
+                let project = Project(
+                    name: "test",
+                    targets: [app, framework],
+                    schemes: [scheme]
+                )
+                let xcodeProject = try project.generateXcodeProject()
+
+                let xcscheme = try unwrap(xcodeProject.sharedData?.schemes.first)
+                try expect(xcscheme.testAction?.preferredScreenCaptureFormat) == .screenRecording
             }
         }
     }

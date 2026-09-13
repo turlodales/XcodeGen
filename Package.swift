@@ -1,10 +1,10 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.9
 
 import PackageDescription
 
 let package = Package(
     name: "XcodeGen",
-    platforms: [.macOS(.v10_13)],
+    platforms: [.macOS(.v11)],
     products: [
         .executable(name: "xcodegen", targets: ["XcodeGen"]),
         .library(name: "XcodeGenKit", targets: ["XcodeGenKit"]),
@@ -15,78 +15,78 @@ let package = Package(
         .package(url: "https://github.com/jpsim/Yams.git", from: "5.0.0"),
         .package(url: "https://github.com/yonaskolb/JSONUtilities.git", from: "4.2.0"),
         .package(url: "https://github.com/kylef/Spectre.git", from: "0.9.2"),
-        .package(url: "https://github.com/onevcat/Rainbow.git", from: "3.0.0"),
-        .package(url: "https://github.com/tuist/XcodeProj.git", from: "8.9.0"),
+        .package(url: "https://github.com/onevcat/Rainbow.git", from: "4.0.0"),
+        .package(url: "https://github.com/tuist/XcodeProj.git", exact: "9.14.0"),
         .package(url: "https://github.com/jakeheis/SwiftCLI.git", from: "6.0.3"),
         .package(url: "https://github.com/mxcl/Version", from: "2.0.0"),
-        .package(url: "https://github.com/SwiftDocOrg/GraphViz.git", .exact("0.2.0")),
+        .package(url: "https://github.com/freddi-kit/ArtifactBundleGen", exact: "0.0.8")
     ],
-
     targets: [
-        .target(name: "XcodeGen", dependencies: [
+        .executableTarget(name: "XcodeGen", dependencies: [
             "XcodeGenCLI",
-            "Version",
+            .product(name: "Version", package: "Version"),
         ]),
         .target(name: "XcodeGenCLI", dependencies: [
             "XcodeGenKit",
             "ProjectSpec",
-            "SwiftCLI",
-            "Rainbow",
-            "PathKit",
-            "Version",
+            .product(name: "SwiftCLI", package: "SwiftCLI"),
+            .product(name: "Rainbow", package: "Rainbow"),
+            .product(name: "PathKit", package: "PathKit"),
+            .product(name: "Version", package: "Version"),
         ]),
         .target(name: "XcodeGenKit", dependencies: [
             "ProjectSpec",
-            "JSONUtilities",
-            "XcodeProj",
-            "PathKit",
+            .product(name: "JSONUtilities", package: "JSONUtilities"),
+            .product(name: "XcodeProj", package: "XcodeProj"),
+            .product(name: "PathKit", package: "PathKit"),
             "XcodeGenCore",
-            "GraphViz",
+        ], resources: [
+            .copy("SettingPresets")
         ]),
         .target(name: "ProjectSpec", dependencies: [
-            "JSONUtilities",
-            "XcodeProj",
-            "Yams",
+            .product(name: "JSONUtilities", package: "JSONUtilities"),
+            .product(name: "XcodeProj", package: "XcodeProj"),
+            .product(name: "Yams", package: "yams"),
             "XcodeGenCore",
-            "Version",
+            .product(name: "Version", package: "Version"),
         ]),
         .target(name: "XcodeGenCore", dependencies: [
-            "PathKit",
-            "Yams",
+            .product(name: "PathKit", package: "PathKit"),
+            .product(name: "Yams", package: "yams"),
         ]),
         .target(name: "TestSupport", dependencies: [
-            "XcodeProj",
-            "Spectre",
-            "PathKit",
+            .product(name: "XcodeProj", package: "XcodeProj"),
+            .product(name: "Spectre", package: "Spectre"),
+            .product(name: "PathKit", package: "PathKit"),
         ]),
         .testTarget(name: "XcodeGenKitTests", dependencies: [
             "XcodeGenKit",
-            "Spectre",
-            "PathKit",
+            .product(name: "Spectre", package: "Spectre"),
+            .product(name: "PathKit", package: "PathKit"),
             "TestSupport",
         ]),
         .testTarget(name: "FixtureTests", dependencies: [
             "XcodeGenKit",
-            "Spectre",
-            "PathKit",
+            .product(name: "Spectre", package: "Spectre"),
+            .product(name: "PathKit", package: "PathKit"),
             "TestSupport",
         ]),
         .testTarget(name: "XcodeGenCoreTests", dependencies: [
             "XcodeGenCore",
-            "Spectre",
-            "PathKit",
+            .product(name: "Spectre", package: "Spectre"),
+            .product(name: "PathKit", package: "PathKit"),
             "TestSupport",
         ]),
         .testTarget(name: "ProjectSpecTests", dependencies: [
             "ProjectSpec",
-            "Spectre",
-            "PathKit",
+            .product(name: "Spectre", package: "Spectre"),
+            .product(name: "PathKit", package: "PathKit"),
             "TestSupport",
         ]),
         .testTarget(name: "PerformanceTests", dependencies: [
             "XcodeGenKit",
-            "Spectre",
-            "PathKit",
+            .product(name: "Spectre", package: "Spectre"),
+            .product(name: "PathKit", package: "PathKit"),
             "TestSupport",
         ]),
     ]

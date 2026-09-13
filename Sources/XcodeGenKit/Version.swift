@@ -4,19 +4,31 @@ import ProjectSpec
 extension Project {
 
     public var xcodeVersion: String {
-        XCodeVersion.parse(options.xcodeVersion ?? "12.0")
+        XCodeVersion.parse(options.xcodeVersion ?? "14.3")
+    }
+
+    public var projectFormat: ProjectFormat {
+        options.projectFormat.flatMap(ProjectFormat.init) ?? .default
     }
 
     var schemeVersion: String {
         "1.7"
     }
 
-    var compatibilityVersion: String {
-        "Xcode 11.0"
+    var compatibilityVersion: String? {
+        projectFormat.compatibilityVersion
     }
 
     var objectVersion: UInt {
-        51
+        projectFormat.objectVersion
+    }
+
+    var preferredProjectObjectVersion: UInt? {
+        projectFormat.preferredProjectObjectVersion
+    }
+
+    var minimizedProjectReferenceProxies: Int {
+        1
     }
 }
 

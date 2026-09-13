@@ -6,9 +6,22 @@ packages:
   SwiftRoaring:
     url: https://github.com/piotte13/SwiftRoaring
     majorVersion: 1.0.4
-  XcodeGen:
-    path: ../../.. #XcodeGen itself
+  Prefire:
+    url: https://github.com/BarredEwe/Prefire
+    majorVersion: 1.4.1
+  SwiftLocation:
+    url: https://github.com/malcommac/SwiftLocation
+    exactVersion: 6.0
+  LocalPackage:
+    path: ../LocalPackage
     group: SPM
+  FooFeature:
+    path: FooFeature
+aggregateTargets:
+  AggTarget:
+    buildToolPlugins:
+      - plugin: PrefirePlaybookPlugin
+        package: Prefire
 targets:
   App:
     type: application
@@ -16,8 +29,11 @@ targets:
     sources: [SPM]
     scheme:
       testTargets:
-        - package: XcodeGen/XcodeGenKitTests
+        - package: LocalPackage/LocalPackageTests
         - Tests
+    buildToolPlugins:
+      - plugin: PrefirePlaybookPlugin
+        package: Prefire
     dependencies:
       - package: Codability
         weak: true
@@ -25,7 +41,12 @@ targets:
         product: SwiftRoaringDynamic
         embed: true
       - target: StaticLibrary
-      - package: XcodeGen
+      - package: LocalPackage
+      - package: SwiftLocation
+      - package: FooFeature
+        products:
+          - FooDomain
+          - FooUI
   Tests:
     type: bundle.unit-test
     platform: iOS
@@ -40,4 +61,8 @@ targets:
       - package: Codability
       - package: SwiftRoaring
         product: SwiftRoaringDynamic
-      - package: XcodeGen
+      - package: LocalPackage
+      - package: FooFeature
+        products:
+        - FooDomain
+        - FooUI

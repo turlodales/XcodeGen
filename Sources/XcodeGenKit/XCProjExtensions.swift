@@ -38,6 +38,8 @@ extension PBXProj {
                 string += "\n 🌎 " + variantGroup.nameOrPath
             } else if let versionGroup = child as? XCVersionGroup {
                 string += "\n 🔢 " + versionGroup.nameOrPath
+            } else if let syncedFolder = child as? PBXFileSystemSynchronizedRootGroup {
+                string += "\n 📁 " + syncedFolder.nameOrPath
             }
         }
         return string
@@ -61,6 +63,10 @@ extension Xcode {
             return "wrapper.extensionkit-extension"
         case ("swiftcrossimport", _):
             return "wrapper.swiftcrossimport"
+        case ("xcstrings", _):
+            return "text.json.xcstrings"
+        case ("icon", _):
+            return "wrapper.icon"
         default:
             // fallback to XcodeProj defaults
             return Xcode.filetype(extension: fileExtension)

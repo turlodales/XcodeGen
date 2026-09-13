@@ -173,7 +173,7 @@ public class SchemeGenerator {
             switch target.location {
             case .package(let packageName):
                 guard let package = self.project.getPackage(packageName),
-                      case let .local(path, _) = package else {
+                      case let .local(path, _, _, _) = package else {
                     throw SchemeGenerationError.missingPackage(packageName)
                 }
                 return XCScheme.BuildableReference(
@@ -208,7 +208,12 @@ public class SchemeGenerator {
                     .first { settingsTarget == $0.buildableReference.blueprintName }?
                     .buildableReference
             }
-            return XCScheme.ExecutionAction(scriptText: action.script, title: action.name, environmentBuildable: environmentBuildable)
+            return XCScheme.ExecutionAction(
+                scriptText: action.script,
+                title: action.name,
+                shellToInvoke: action.shell,
+                environmentBuildable: environmentBuildable
+            )
         }
 
         let schemeTarget: ProjectTarget?
@@ -234,7 +239,8 @@ public class SchemeGenerator {
             postActions: scheme.build.postActions.map(getExecutionAction),
             parallelizeBuild: scheme.build.parallelizeBuild,
             buildImplicitDependencies: scheme.build.buildImplicitDependencies,
-            runPostActionsOnFailure: scheme.build.runPostActionsOnFailure
+            runPostActionsOnFailure: scheme.build.runPostActionsOnFailure,
+            buildArchitectures: scheme.build.buildArchitectures
         )
 
         let testables: [XCScheme.TestableReference] = zip(testTargets, testBuildTargetEntries).map { testTarget, testBuildEntries in
@@ -255,7 +261,7 @@ public class SchemeGenerator {
             
             return XCScheme.TestableReference(
                 skipped: testTarget.skipped,
-                parallelizable: testTarget.parallelizable,
+                parallelization: testTarget.parallelizable ? .all : .none,
                 randomExecutionOrdering: testTarget.randomExecutionOrder,
                 buildableReference: testBuildEntries.buildableReference,
                 locationScenarioReference: locationScenarioReference,
@@ -281,10 +287,21 @@ public class SchemeGenerator {
         let testPlans = scheme.test?.testPlans.enumerated().map { index, testPlan in
              XCScheme.TestPlanReference(reference: "container:\(testPlan.path)", default: defaultTestPlanIndex == index)
         } ?? []
+        let testBuildableEntries = buildActionEntries.filter({ $0.buildFor.contains(.testing) }) + testBuildTargetEntries
+        let testMacroExpansionBuildableRef = testBuildableEntries.map(\.buildableReference).contains(buildableReference) ? buildableReference : testBuildableEntries.first?.buildableReference
+
+        let testMacroExpansion: XCScheme.BuildableReference = buildActionEntries.first(
+            where: { value in
+                if let macroExpansion = scheme.test?.macroExpansion {
+                    return value.buildableReference.blueprintName == macroExpansion
+                }
+                return false
+            }
+        )?.buildableReference ?? testMacroExpansionBuildableRef ?? buildableReference
 
         let testAction = XCScheme.TestAction(
             buildConfiguration: scheme.test?.config ?? defaultDebugConfig.name,
-            macroExpansion: buildableReference,
+            macroExpansion: testMacroExpansion,
             testables: testables,
             testPlans: testPlans.isEmpty ? nil : testPlans,
             preActions: scheme.test?.preActions.map(getExecutionAction) ?? [],
@@ -295,12 +312,17 @@ public class SchemeGenerator {
             codeCoverageEnabled: scheme.test?.gatherCoverageData ?? Scheme.Test.gatherCoverageDataDefault,
             codeCoverageTargets: coverageBuildableTargets,
             onlyGenerateCoverageForSpecifiedTargets: !coverageBuildableTargets.isEmpty,
+            enableAddressSanitizer: scheme.test?.enableAddressSanitizer ?? Scheme.Test.enableAddressSanitizerDefault,
+            enableASanStackUseAfterReturn: scheme.test?.enableASanStackUseAfterReturn ?? Scheme.Test.enableASanStackUseAfterReturnDefault,
+            enableThreadSanitizer: scheme.test?.enableThreadSanitizer ?? Scheme.Test.enableThreadSanitizerDefault,
+            enableUBSanitizer: scheme.test?.enableUBSanitizer ?? Scheme.Test.enableUBSanitizerDefault,
             disableMainThreadChecker: scheme.test?.disableMainThreadChecker ?? Scheme.Test.disableMainThreadCheckerDefault,
             commandlineArguments: testCommandLineArgs,
             environmentVariables: testVariables,
             language: scheme.test?.language,
             region: scheme.test?.region,
             systemAttachmentLifetime: scheme.test?.systemAttachmentLifetime,
+            preferredScreenCaptureFormat: scheme.test?.preferredScreenCaptureFormat,
             customLLDBInitFile: scheme.test?.customLLDBInit
         )
 
@@ -338,11 +360,18 @@ public class SchemeGenerator {
             selectedDebuggerIdentifier: selectedDebuggerIdentifier(for: schemeTarget, run: scheme.run),
             selectedLauncherIdentifier: selectedLauncherIdentifier(for: schemeTarget, run: scheme.run),
             askForAppToLaunch: scheme.run?.askForAppToLaunch,
+            customWorkingDirectory: scheme.run?.customWorkingDirectory,
+            useCustomWorkingDirectory: scheme.run?.customWorkingDirectory != nil,
             allowLocationSimulation: allowLocationSimulation,
             locationScenarioReference: locationScenarioReference,
             enableGPUFrameCaptureMode: scheme.run?.enableGPUFrameCaptureMode ?? XCScheme.LaunchAction.defaultGPUFrameCaptureMode,
-            enableGPUValidationMode: scheme.run?.enableGPUValidationMode ?? XCScheme.LaunchAction.defaultGPUValidationMode,
+            disableGPUValidationMode: !(scheme.run?.enableGPUValidationMode ?? Scheme.Run.enableGPUValidationModeDefault),
+            enableAddressSanitizer: scheme.run?.enableAddressSanitizer ?? Scheme.Run.enableAddressSanitizerDefault,
+            enableASanStackUseAfterReturn: scheme.run?.enableASanStackUseAfterReturn ?? Scheme.Run.enableASanStackUseAfterReturnDefault,
+            enableThreadSanitizer: scheme.run?.enableThreadSanitizer ?? Scheme.Run.enableThreadSanitizerDefault,
+            enableUBSanitizer: scheme.run?.enableUBSanitizer ?? Scheme.Run.enableUBSanitizerDefault,
             disableMainThreadChecker: scheme.run?.disableMainThreadChecker ?? Scheme.Run.disableMainThreadCheckerDefault,
+            disablePerformanceAntipatternChecker: scheme.run?.disableThreadPerformanceChecker ?? Scheme.Run.disableThreadPerformanceCheckerDefault,
             stopOnEveryMainThreadCheckerIssue: scheme.run?.stopOnEveryMainThreadCheckerIssue ?? Scheme.Run.stopOnEveryMainThreadCheckerIssueDefault,
             commandlineArguments: launchCommandLineArgs,
             environmentVariables: launchVariables,
@@ -460,7 +489,8 @@ extension Scheme {
                 targets: Scheme.buildTargets(for: target, project: project),
                 buildImplicitDependencies: targetScheme.buildImplicitDependencies,
                 preActions: targetScheme.preActions,
-                postActions: targetScheme.postActions
+                postActions: targetScheme.postActions,
+                buildArchitectures: targetScheme.buildArchitectures
             ),
             run: .init(
                 config: debugConfig,
@@ -468,6 +498,7 @@ extension Scheme {
                 environmentVariables: targetScheme.environmentVariables,
                 disableMainThreadChecker: targetScheme.disableMainThreadChecker,
                 stopOnEveryMainThreadCheckerIssue: targetScheme.stopOnEveryMainThreadCheckerIssue,
+                disableThreadPerformanceChecker: targetScheme.disableThreadPerformanceChecker,
                 language: targetScheme.language,
                 region: targetScheme.region,
                 storeKitConfiguration: targetScheme.storeKitConfiguration

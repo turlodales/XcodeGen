@@ -8,9 +8,6 @@ import Version
 
 class GenerateCommand: ProjectCommand {
 
-    @Flag("-q", "--quiet", description: "Suppress all informational and success output")
-    var quiet: Bool
-
     @Flag("-c", "--use-cache", description: "Use a cache for the xcodegen spec. This will prevent unnecessarily generating the project if nothing has changed")
     var useCache: Bool
 
@@ -42,11 +39,16 @@ class GenerateCommand: ProjectCommand {
 
         let projectPath = projectDirectory + "\(project.name).xcodeproj"
 
+        // run pre gen command before we use the cache as the scripts may change it
+        if let command = project.options.preGenCommand {
+            try Task.run(bash: command, directory: projectDirectory.absolute().string)
+        }
+
         let cacheFilePath = self.cacheFilePath ??
             Path("~/.xcodegen/cache/\(projectSpecPath.absolute().string.md5)").absolute()
         var cacheFile: CacheFile?
 
-        // read cache
+        // generate cache
         if useCache || self.cacheFilePath != nil {
             do {
                 cacheFile = try specLoader.generateCacheFile()
@@ -80,11 +82,6 @@ class GenerateCommand: ProjectCommand {
             throw GenerationError.validationError(error)
         }
 
-        // run pre gen command
-        if let command = project.options.preGenCommand {
-            try Task.run(bash: command, directory: projectDirectory.absolute().string)
-        }
-
         // generate plists
         info("⚙️  Generating plists...")
         let fileWriter = FileWriter(project: project)
@@ -103,7 +100,7 @@ class GenerateCommand: ProjectCommand {
         do {
             let projectGenerator = ProjectGenerator(project: project)
 
-            guard let userName = ProcessInfo.processInfo.environment["LOGNAME"] else {
+            guard let userName = ProcessInfo.processInfo.environment["USER"] else {
                 throw GenerationError.missingUsername
             }
 
@@ -136,24 +133,6 @@ class GenerateCommand: ProjectCommand {
         // run post gen command
         if let command = project.options.postGenCommand {
             try Task.run(bash: command, directory: projectDirectory.absolute().string)
-        }
-    }
-
-    func info(_ string: String) {
-        if !quiet {
-            stdout.print(string)
-        }
-    }
-
-    func warning(_ string: String) {
-        if !quiet {
-            stdout.print(string.yellow)
-        }
-    }
-
-    func success(_ string: String) {
-        if !quiet {
-            stdout.print(string.green)
         }
     }
 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -18,6 +18,8 @@
 				106CDB4BCFD183241A565E6C /* PBXTargetDependency */,
 			);
 			name = SuperTarget;
+			packageProductDependencies = (
+			);
 			productName = SuperTarget;
 		};
 /* End PBXAggregateTarget section */
@@ -25,13 +27,12 @@
 /* Begin PBXBuildFile section */
 		01BFA2C4D9C5BBC72C015AA8 /* MyFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A58A16491CDDF968B0D56DE /* MyFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		02F9D686CBA6068A8EE58026 /* StaticLibrary_ObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0C79A8C750EC0DE748C463 /* StaticLibrary_ObjC.m */; };
+		03D1147528CED90EC1D844CE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C7F9636B706AC92629D0B48 /* XCTest.framework */; };
 		03FFCE664129864A8F167C2F /* FrameworkFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E4CCE342955E0E934BE533 /* FrameworkFile.swift */; };
 		052D6B4572FBF002286865D7 /* CrossOverlayFramework.swiftcrossimport in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DD7A61B07AD2F91BDECC255 /* CrossOverlayFramework.swiftcrossimport */; };
 		06F1750F0E45E4822F806523 /* MyFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 576675973B56A96047CB4944 /* MyFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0786F9C725AD215C4F915BB5 /* MyFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A58A16491CDDF968B0D56DE /* MyFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		078FAAF5C2B851C7D5EA714F /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D296BB7355994040E197A1EE /* Result.framework */; };
 		079B6E02AF21664AB08E621C /* TestProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587B9E9A3533E965CA602B76 /* TestProjectUITests.swift */; };
-		07EDA4085F0E7EE1471DC64F /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0C5AC2545AE4D4F7F44E2E9B /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0927149520F12314CE8B4079 /* TestFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E43116070AFEF5D8C3A5A957 /* TestFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0932FB6FB887D7D6F7727CB7 /* Driver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 432E2C071A4B6B3757BEA13E /* Driver.cpp */; };
 		09617AB755651FFEB2564CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1A2F579A6F79C62DDA0571 /* AppDelegate.swift */; settings = {COMPILER_FLAGS = "-Werror"; }; };
@@ -40,11 +41,10 @@
 		0D0E2466833FC2636B92C43D /* Swinject in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = D7917D10F77DA9D69937D493 /* Swinject */; };
 		0F99AECCB4691803C791CDCE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC2A8A829CE71B1CF415FF7 /* Main.storyboard */; };
 		15129B8D9ED000BDA1FEEC27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A2F16890ECF2EE3FED72AE /* AppDelegate.swift */; };
-		1551370B0ACAC632E15C853B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF47010E7368583405AA50CB /* SwiftyJSON.framework */; };
+		1B485D6584C3B47AC58831C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18722C61B05FFF4CC63D5755 /* ContentView.swift */; platformFilters = (tvos, ); };
 		1BC891D89980D82738D963F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74FBDFA5CB063F6001AD8ACD /* Main.storyboard */; };
 		1E03FC7312293997599C6435 /* Empty.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 068EDF47F0B087F6A4052AC0 /* Empty.h */; };
 		1E2A4D61E96521FF7123D7B0 /* XPC Service.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 22237B8EBD9E6BE8EBC8735F /* XPC Service.xpc */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1E457F55331FD2C3E8E00BE2 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0C5AC2545AE4D4F7F44E2E9B /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1EFFFE113C5E54A91148D3EB /* FrameworkFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E4CCE342955E0E934BE533 /* FrameworkFile.swift */; };
 		1F9168A43FD8E2FCC2699E14 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = B5C943D39DD7812CAB94B614 /* Documentation.docc */; settings = {COMPILER_FLAGS = "-Werror"; }; };
 		204958B9AD868004CCE6B779 /* App_watchOS Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0D09D243DBCF9D32E239F1E8 /* App_watchOS Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -53,9 +53,9 @@
 		212BCB51DAF3212993DDD49E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D51CC8BCCBD68A90E90A3207 /* Assets.xcassets */; };
 		21425F6DE3D493B6F1E33D21 /* Framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FC82ED1C4C3B7B3D7B2FB7 /* Framework.framework */; };
 		216B220EC7961DF7CA9188B7 /* StaticLibrary_ObjC.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5A2B916A11DCC2565241359F /* StaticLibrary_ObjC.h */; };
-		21CA04F29CD0DEB0DD27B808 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C5AC2545AE4D4F7F44E2E9B /* Result.framework */; };
 		262891CCD5F74316610437FA /* Framework2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF21DF245F66BEF5446AAEF /* Framework2.framework */; platformFilter = ios; settings = {ATTRIBUTES = (Weak, ); }; };
 		265B6A05C0198FD2EB485173 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C033648A37D95027845BD3 /* main.swift */; };
+		2698ED273D0A5820B28CAD20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D52EC9AA9FFD3B690C355068 /* LaunchScreen.storyboard */; platformFilters = (ios, ); };
 		2730C6D0A35AED4ADD6EDF17 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0704B6CAFBB53E0EBB08F6B3 /* ViewController.swift */; settings = {COMPILER_FLAGS = "-Werror"; }; };
 		28A96EBC76D53817AABDA91C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8AF20308873AEEEC4D8C45D1 /* Settings.bundle */; };
 		2A5356FCC03EE312F1738C61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B82F603D981398F38D762E /* AppDelegate.swift */; };
@@ -63,13 +63,12 @@
 		2B940E57041A72E6A39B6BF0 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C872631362DDBAFCE71E5C66 /* Interface.storyboard */; };
 		2C7C03B45571A13D472D6B23 /* iMessageApp.app in Resources */ = {isa = PBXBuildFile; fileRef = 9A87A926D563773658FB87FE /* iMessageApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2FAE950E8FF2E7C0F7FF1FE9 /* Framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9274BE42A03DC5DA1FAD04 /* Framework.framework */; };
-		307B5322FC5A220652BA6FE0 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D296BB7355994040E197A1EE /* Result.framework */; };
 		3133B36F3898A27A2B1C56FC /* FrameworkFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F527F2590C14956518174 /* FrameworkFile.swift */; };
-		32956CD11BD6B02E64F5D8D1 /* swift-tagged.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4841131C451A658AC8596C /* swift-tagged.framework */; };
 		3318F40C855184C18197ED30 /* StaticLibrary_ObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0C79A8C750EC0DE748C463 /* StaticLibrary_ObjC.m */; };
 		339578307B9266AB3D7722D9 /* File2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC56891DA7446EAC8C2F27EB /* File2.swift */; };
 		3535891EC86283BB5064E7E1 /* Headers in Headers */ = {isa = PBXBuildFile; fileRef = 2E1E747C7BC434ADB80CC269 /* Headers */; settings = {ATTRIBUTES = (Public, ); }; };
 		3788E1382B38DF4ACE3D2BB1 /* MyFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A58A16491CDDF968B0D56DE /* MyFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A3BA9F91994D8B472C71F04 /* Swinject in Frameworks */ = {isa = PBXBuildFile; platformFilters = (tvos, ); productRef = C7F9B7EDE85527EFEA85D46D /* Swinject */; };
 		3BBCA6F76E5F212E9C55FB78 /* BundleX.bundle in Copy Bundle Resources */ = {isa = PBXBuildFile; fileRef = 45C12576F5AA694DD0CE2132 /* BundleX.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C5134EE524310ACF7B7CD6E /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAF6C55B555E3E1352645B6 /* ExtensionDelegate.swift */; };
 		3DF22C477446669094AC7C8C /* ExternalTarget.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F6ADE654A3459AFDA2CC0CD3 /* ExternalTarget.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -100,32 +99,31 @@
 		632774E7F21CCB386A76B2A8 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B198242976C3395E31FE000A /* MessagesViewController.swift */; };
 		63D8E7F00276736EDA62D227 /* Framework2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF21DF245F66BEF5446AAEF /* Framework2.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65B3BAC02D5FAE632719C984 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF59AC868D227C92CA8B1B57 /* Model.xcmappingmodel */; };
-		65EBD2D87F1F5FDA63F8C027 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C5AC2545AE4D4F7F44E2E9B /* Result.framework */; };
 		666AA5F3F63C8FD7C68A6CC5 /* MyFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A58A16491CDDF968B0D56DE /* MyFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		666DEC173BC78C7641AB22EC /* File1.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1343F2238429D4DA9D830B /* File1.swift */; };
 		66C3C5E3C13325F351A3008F /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = F2950763C4C568CC85021D18 /* module.modulemap */; };
 		6B0BCD3573931F7BE133B301 /* TestProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D132EA69984F32DA9DC727B6 /* TestProjectTests.swift */; };
 		6C02002A4EE169CEBEC7BA7F /* FrameworkFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E4CCE342955E0E934BE533 /* FrameworkFile.swift */; };
 		6E8F8303759824631C8D9DA3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9E17D598D98065767A04740F /* Localizable.strings */; };
+		6F3848C1EF3E43A5AC2A4D40 /* TestIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = FD5AEA58D3C0A1C8EEDF00F7 /* TestIcon.icon */; };
 		713F57A10C62F70058D7FB0A /* FrameworkFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E4CCE342955E0E934BE533 /* FrameworkFile.swift */; };
 		7148A4172BFA1CC22E6ED5DB /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 753001CDCEAA4C4E1AFF8E87 /* MainInterface.storyboard */; };
 		71A2AAC5934BDC9EDB6F0D9E /* libStaticLibrary_ObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B221F5A689AD7D3AD52F56B8 /* libStaticLibrary_ObjC.a */; };
 		747CAE14D196F5652E93353C /* Headers in Headers */ = {isa = PBXBuildFile; fileRef = 2E1E747C7BC434ADB80CC269 /* Headers */; settings = {ATTRIBUTES = (Public, ); }; };
 		75F2774F183838AF34CA9B8A /* StaticLibrary_ObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0C79A8C750EC0DE748C463 /* StaticLibrary_ObjC.m */; };
+		76156B580B30704346296641 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C7F9636B706AC92629D0B48 /* XCTest.framework */; };
 		768648ED7E93B6D888574144 /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = F2950763C4C568CC85021D18 /* module.modulemap */; };
 		76DC6A4B18F434BAC239CC4A /* DriverKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A428E67153BB40184F37BE /* DriverKit.framework */; };
-		778F71CA1CC4BEECDACAD8B9 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0C5AC2545AE4D4F7F44E2E9B /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		76F3F9A5E2A4623430374F31 /* LocalizableStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E66ABD3EB14C9D63DEF5C532 /* LocalizableStrings.xcstrings */; };
 		77C3CB285572EA4BB7E201A7 /* App_Clip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 38DB679FF1CF4E379D1AB103 /* App_Clip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7A0DABBEA55B06E148C665A8 /* StaticLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC91042453E18DF74BA1C0F /* StaticLibrary.swift */; };
 		7A8C78212CEAC6452DFAB00E /* FrameworkFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F527F2590C14956518174 /* FrameworkFile.swift */; };
-		7C8FF0B857E390417134C10F /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D296BB7355994040E197A1EE /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7F658343A505B824321E086B /* Headers in Headers */ = {isa = PBXBuildFile; fileRef = 2E1E747C7BC434ADB80CC269 /* Headers */; settings = {ATTRIBUTES = (Public, ); }; };
 		803B7CE086CFBA409F9D1ED7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 108BB29172D27BE3BD1E7F35 /* Assets.xcassets */; };
 		818D448D4DDD6649B5B26098 /* example.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 28360ECA4D727FAA58557A81 /* example.mp4 */; settings = {ASSET_TAGS = (tag1, tag2, ); }; };
 		81DFAB3A7633CE97929B9B2A /* Framework.framework in Embed Dependencies */ = {isa = PBXBuildFile; fileRef = 41FC82ED1C4C3B7B3D7B2FB7 /* Framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8267B75289E9D6C7B38FC426 /* DriverKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A428E67153BB40184F37BE /* DriverKit.framework */; };
 		87927928A8A3460166ACB819 /* SwiftFileInDotPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F430AABE04B7499B458D9DB /* SwiftFileInDotPath.swift */; settings = {COMPILER_FLAGS = "-Werror"; }; };
-		8C941A6EF08069CB3CB88FC1 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0C5AC2545AE4D4F7F44E2E9B /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		900CFAD929CAEE3861127627 /* MyBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7B5068D64404C61A67A18458 /* MyBundle.bundle */; };
 		94FD20C3EA5EBCEC8783740C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDCA996D141DD8A16B18D68F /* GoogleService-Info.plist */; };
 		95DD9941E1529FD2AE1A191D /* StaticLibrary_ObjC.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5A2B916A11DCC2565241359F /* StaticLibrary_ObjC.h */; };
@@ -134,27 +132,23 @@
 		9AB50B81C29243936BB419E4 /* FrameworkFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F527F2590C14956518174 /* FrameworkFile.swift */; };
 		9C92B7C89E5F0A10A34F5AA4 /* Framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9274BE42A03DC5DA1FAD04 /* Framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9D80BD5FAE6BE61CFD74CF1B /* FrameworkFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F527F2590C14956518174 /* FrameworkFile.swift */; };
-		9DF5931DAD58C35B830A0A75 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B76E17CE3574081D5BF45B44 /* Result.framework */; };
 		A1588BF3BFFE1DF7409CBA10 /* Framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9274BE42A03DC5DA1FAD04 /* Framework.framework */; };
-		A1AEAAB53EAEDA1C307871FA /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB178D03E75929F3F5B10C56 /* Result.framework */; };
+		A496E1DB82E16DA4099D1411 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C7F9636B706AC92629D0B48 /* XCTest.framework */; };
 		A59B3F08914812573AFF6C2D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD4A16C7B8FEB7F97F3CBE3F /* libz.dylib */; };
 		A7438C77A05D83E7016CF044 /* Framework2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0DC40025AB59B688E758829 /* Framework2.framework */; };
-		A7D1A9942302569A9515696A /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D296BB7355994040E197A1EE /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A90C4C147AD175DB9F7B5114 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CD22B8CD2E91BB97CC534E /* main.swift */; };
 		A949422315536EACDF8DD78A /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B785B1161553A7DD6DA4255 /* NetworkExtension.framework */; };
 		A9548E5DCFE92236494164DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1F06D99242F4223D081F0D /* LaunchScreen.storyboard */; };
 		AFF19412E9B35635D3AF48CB /* XPC_Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 148B7C933698BCC4F1DBA979 /* XPC_Service.m */; };
-		B142965C5AE9C6200BF65802 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C5AC2545AE4D4F7F44E2E9B /* Result.framework */; platformFilter = maccatalyst; };
 		B18C121B0A4D43ED8149D8E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79325B44B19B83EC6CEDBCC5 /* LaunchScreen.storyboard */; };
 		B20617116B230DED1F7AF5E5 /* libStaticLibrary_ObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B221F5A689AD7D3AD52F56B8 /* libStaticLibrary_ObjC.a */; };
 		B2D43A31C184E34EF9CB743C /* Framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9274BE42A03DC5DA1FAD04 /* Framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B358AB913543E62237FCC4E3 /* MyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A4363D659A58DA835DE8BA /* MyAppApp.swift */; };
 		B47F2629BFE5853767C8BB5E /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDB2B6A77D39CD5602F2125F /* Contacts.framework */; };
 		B49D3A51787E362DE4D0E78A /* SomeXPCService.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 70A8E15C81E454DC950C59F0 /* SomeXPCService.xpc */; };
 		B502EF8F7605CBD038298F23 /* CrossOverlayFramework.swiftcrossimport in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DD7A61B07AD2F91BDECC255 /* CrossOverlayFramework.swiftcrossimport */; };
 		B9F3C9E77019EC3423A7F5D8 /* TestProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DF9DCA8399E3214A7E27CF /* TestProjectTests.swift */; };
 		BAA1C1E3828F5D43546AF997 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BB1B49A91B892152D68ED76 /* libc++.tbd */; };
-		BB06A57E259D0D2A001EA21F /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0C5AC2545AE4D4F7F44E2E9B /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BD1419893577E6CEDF8CBA83 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0C5AC2545AE4D4F7F44E2E9B /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BFCCC56337A5D9D513C1C791 /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = F2950763C4C568CC85021D18 /* module.modulemap */; };
 		C093BF20B99FE892D0F06B2D /* libEndpointSecurity.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC75409252FF15F540FBB7B /* libEndpointSecurity.tbd */; };
 		C3672B561F456794151C047C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C3FE6B986506724DAB5D0F /* ViewController.swift */; };
@@ -163,6 +157,7 @@
 		C836F09B677937EFF69B1FCE /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C934C1F7A68CCD0AB6B38478 /* NotificationController.swift */; };
 		C88598A49087A212990F4E8B /* ResourceFolder in Resources */ = {isa = PBXBuildFile; fileRef = 6B1603BA83AA0C7B94E45168 /* ResourceFolder */; };
 		CAE18A2194B57C830A297F83 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6680EFE4E908CDBDCE405C8 /* main.swift */; };
+		CAF8470C7F1BF207DBE6AEE3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEFDE76B5FEC833403C0869 /* ContentView.swift */; platformFilters = (ios, ); };
 		CCA17097382757012B58C17C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BC32A813B80A53962A1F365 /* Assets.xcassets */; };
 		D058D241BDF5FB0C919BBECA /* CrossOverlayFramework.swiftcrossimport in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DD7A61B07AD2F91BDECC255 /* CrossOverlayFramework.swiftcrossimport */; };
 		D5458D67C3596943114C3205 /* Standalone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5BD97AF0F94A15A5B7DDB7 /* Standalone.swift */; };
@@ -181,7 +176,6 @@
 		E7B40B34D8807F43A3805381 /* ExternalTarget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6ADE654A3459AFDA2CC0CD3 /* ExternalTarget.framework */; };
 		E8A135F768448632F8D77C8F /* StandaloneAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3571E41E19A5AB8AAAB04109 /* StandaloneAssets.xcassets */; };
 		EDB55692D392FD09C3FCFBF6 /* libStaticLibrary_ObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86169DEEDEAF09AB89C8A31D /* libStaticLibrary_ObjC.a */; };
-		EDE8DD3CB36D65C300A53D1E /* swift-tagged.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4841131C451A658AC8596C /* swift-tagged.framework */; };
 		F4D77E81B0539EA5F4F141A6 /* EndpointSecuritySystemExtension.systemextension in Embed System Extensions */ = {isa = PBXBuildFile; fileRef = E5E0A80CCE8F8DB662DCD2D0 /* EndpointSecuritySystemExtension.systemextension */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F5D71267BB5A326BDD69D532 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E55F45EACB0F382722D61C8D /* Assets.xcassets */; };
 		F6537CE373C94809E6653758 /* Headers in Headers */ = {isa = PBXBuildFile; fileRef = 2E1E747C7BC434ADB80CC269 /* Headers */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -444,17 +438,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		05D615CB74F875917AA8C9B0 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				8C941A6EF08069CB3CB88FC1 /* Result.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		06FAE8D6834F982AA934B3E8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -464,18 +447,6 @@
 				216B220EC7961DF7CA9188B7 /* StaticLibrary_ObjC.h in CopyFiles */,
 				BFCCC56337A5D9D513C1C791 /* module.modulemap in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		08DA9F1F0ED13AC054003B27 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				1E457F55331FD2C3E8E00BE2 /* Result.framework in Embed Frameworks */,
-				778F71CA1CC4BEECDACAD8B9 /* Result.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		096753D5DAA26D110F699A7F /* CopyFiles */ = {
@@ -495,7 +466,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				0927149520F12314CE8B4079 /* TestFramework.framework in Embed Frameworks */,
-				07EDA4085F0E7EE1471DC64F /* Result.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -520,17 +490,6 @@
 				204958B9AD868004CCE6B779 /* App_watchOS Extension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6CB76DFA8662672C4245AF41 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				7C8FF0B857E390417134C10F /* Result.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7FAF0BBB3DE701EBE5DBE810 /* CopyFiles */ = {
@@ -606,8 +565,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				535A98A3E3B74E09891D977F /* TestFramework.framework in Embed Frameworks */,
-				BD1419893577E6CEDF8CBA83 /* Result.framework in Embed Frameworks */,
-				BB06A57E259D0D2A001EA21F /* Result.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -678,17 +635,6 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F8CDEFED6ED131A09041F995 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				A7D1A9942302569A9515696A /* Result.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FB79B30FEA6073A29B4D9FCC /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -730,16 +676,16 @@
 		0B9D98D935F2C69A1F5BA539 /* App_macOS_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = App_macOS_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BB1B49A91B892152D68ED76 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		0BC75409252FF15F540FBB7B /* libEndpointSecurity.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libEndpointSecurity.tbd; path = usr/lib/libEndpointSecurity.tbd; sourceTree = SDKROOT; };
-		0C5AC2545AE4D4F7F44E2E9B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
 		0D09D243DBCF9D32E239F1E8 /* App_watchOS Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "App_watchOS Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0E4841131C451A658AC8596C /* swift-tagged.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "swift-tagged.framework"; sourceTree = "<group>"; };
 		0F5BD97AF0F94A15A5B7DDB7 /* Standalone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Standalone.swift; sourceTree = "<group>"; };
 		102A08142A31E44F4ED52649 /* base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = base.xcconfig; sourceTree = "<group>"; };
 		108BB29172D27BE3BD1E7F35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13EEAB58665D79C15184D9D0 /* App_iOS_UITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = App_iOS_UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		148B7C933698BCC4F1DBA979 /* XPC_Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XPC_Service.m; sourceTree = "<group>"; };
+		15A4363D659A58DA835DE8BA /* MyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppApp.swift; sourceTree = "<group>"; };
 		16AA52945B70B1BF9E246350 /* FilterDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDataProvider.swift; sourceTree = "<group>"; };
 		16D662EE577E4CD6AFF39D66 /* config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = config.xcconfig; sourceTree = "<group>"; };
+		18722C61B05FFF4CC63D5755 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		187E665975BB5611AF0F27E1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1BC32A813B80A53962A1F365 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D0C79A8C750EC0DE748C463 /* StaticLibrary_ObjC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StaticLibrary_ObjC.m; sourceTree = "<group>"; };
@@ -766,6 +712,7 @@
 		3ED831531AA349CCC19B258B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3EF21DF245F66BEF5446AAEF /* Framework2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Framework2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FC04772130400920D68A167 /* App_Clip_Tests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = App_Clip_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		407C3F0009FDCE5B1B7DC2A8 /* App_supportedDestinations.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = App_supportedDestinations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40863AE6202CFCD0529D8438 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		41FC82ED1C4C3B7B3D7B2FB7 /* Framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		432E2C071A4B6B3757BEA13E /* Driver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Driver.cpp; sourceTree = "<group>"; };
@@ -774,6 +721,7 @@
 		469B630D28015F0EDC456F6B /* libStaticLibrary_ObjC.a */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = archive.ar; path = libStaticLibrary_ObjC.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		46DD8F9AAC104BDB63793625 /* libStaticLibrary_ObjC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libStaticLibrary_ObjC.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BF4D16042A80576D259160C /* Model 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 3.xcdatamodel"; sourceTree = "<group>"; };
+		4C7F9636B706AC92629D0B48 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5116B3B58070BCD09F1487BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		553D289724905857912C7A1D /* outputList.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = outputList.xcfilelist; sourceTree = "<group>"; };
 		576675973B56A96047CB4944 /* MyFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyFramework.h; sourceTree = "<group>"; };
@@ -830,14 +778,13 @@
 		AAA49985DFFE797EE8416887 /* inputList.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = inputList.xcfilelist; sourceTree = "<group>"; };
 		AB055761199DF36DB0C629A6 /* Framework2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Framework2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEBCA8CFF769189C0D52031E /* App_iOS.xctestplan */ = {isa = PBXFileReference; path = App_iOS.xctestplan; sourceTree = "<group>"; };
+		AEEFDE76B5FEC833403C0869 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B17B8D9C9B391332CD176A35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LocalizedStoryboard.storyboard; sourceTree = "<group>"; };
 		B198242976C3395E31FE000A /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		B1C33BB070583BE3B0EC0E68 /* App_iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = App_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B221F5A689AD7D3AD52F56B8 /* libStaticLibrary_ObjC.a */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = archive.ar; path = libStaticLibrary_ObjC.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C943D39DD7812CAB94B614 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
-		B76E17CE3574081D5BF45B44 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
 		BA040F1F7D6CA08878323A55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		BB178D03E75929F3F5B10C56 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
 		BB677D970923F663D846D7E0 /* BundleY.bundle */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BundleY.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC56891DA7446EAC8C2F27EB /* File2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = File2.swift; path = Group2/File2.swift; sourceTree = "<group>"; };
 		BDCA996D141DD8A16B18D68F /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -853,8 +800,8 @@
 		CB77A637470A3CDA2BDDBE99 /* App_iOS_Tests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = App_iOS_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D132EA69984F32DA9DC727B6 /* TestProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProjectTests.swift; sourceTree = "<group>"; };
 		D21BB1B6FA5A025305B223BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		D296BB7355994040E197A1EE /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
 		D51CC8BCCBD68A90E90A3207 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D52EC9AA9FFD3B690C355068 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D629E142AB87C681D4EC90F7 /* iMessageExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = iMessageExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6C89D80B5458D8929F5C127 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D70BE0C05E5779A077793BE6 /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -868,6 +815,7 @@
 		E43116070AFEF5D8C3A5A957 /* TestFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TestFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E55F45EACB0F382722D61C8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5E0A80CCE8F8DB662DCD2D0 /* EndpointSecuritySystemExtension.systemextension */ = {isa = PBXFileReference; explicitFileType = "wrapper.system-extension"; includeInIndex = 0; path = EndpointSecuritySystemExtension.systemextension; sourceTree = BUILT_PRODUCTS_DIR; };
+		E66ABD3EB14C9D63DEF5C532 /* LocalizableStrings.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = LocalizableStrings.xcstrings; sourceTree = "<group>"; };
 		E9672EF8FE1DDC8DE0705129 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		EDCC70978B8AD49373DA0DE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EE1343F2238429D4DA9D830B /* File1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = File1.swift; path = Group/File1.swift; sourceTree = "<group>"; };
@@ -879,10 +827,49 @@
 		FA86D418796C1A6864414460 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		FD05F36F95D6F098A76F220B /* XPC_Service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPC_Service.h; sourceTree = "<group>"; };
 		FD4A16C7B8FEB7F97F3CBE3F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		FD5AEA58D3C0A1C8EEDF00F7 /* TestIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = wrapper.icon; path = TestIcon.icon; sourceTree = "<group>"; };
 		FDB2B6A77D39CD5602F2125F /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		FED40A89162E446494DDE7C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		FF47010E7368583405AA50CB /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		9A259ACEBCE19CC5F22B6DD4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ExcludedFile.swift,
+				Info.plist,
+			);
+			target = 0867B0DACEF28C11442DE8F7 /* App_iOS */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A2F1B5386E15A261AC8A4DEE /* SyncedChild */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			name = SyncedChild;
+			path = SyncedChild;
+			sourceTree = "<group>";
+		};
+		AE2AB2772F70DFFF402AA02B /* SyncedFolder */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				9A259ACEBCE19CC5F22B6DD4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */,
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+				Resources,
+				FeatureATests,
+				FeatureBTests,
+			);
+			path = SyncedFolder;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		117840B4DBC04099F6779D00 /* Frameworks */ = {
@@ -893,10 +880,8 @@
 				4CB673A7C0C11E04F8544BDB /* Contacts.framework in Frameworks */,
 				262891CCD5F74316610437FA /* Framework2.framework in Frameworks */,
 				2FAE950E8FF2E7C0F7FF1FE9 /* Framework.framework in Frameworks */,
-				B142965C5AE9C6200BF65802 /* Result.framework in Frameworks */,
 				B20617116B230DED1F7AF5E5 /* libStaticLibrary_ObjC.a in Frameworks */,
 				0D0E2466833FC2636B92C43D /* Swinject in Frameworks */,
-				1551370B0ACAC632E15C853B /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -905,7 +890,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C1504A05321046B3ED7A839 /* Framework2.framework in Frameworks */,
-				A1AEAAB53EAEDA1C307871FA /* Result.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36418B6CABA06BA9B206556E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A3BA9F91994D8B472C71F04 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -914,7 +906,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7438C77A05D83E7016CF044 /* Framework2.framework in Frameworks */,
-				9DF5931DAD58C35B830A0A75 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,8 +913,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A496E1DB82E16DA4099D1411 /* XCTest.framework in Frameworks */,
 				5E0369B907E239D1E6884ECF /* TestFramework.framework in Frameworks */,
-				EDE8DD3CB36D65C300A53D1E /* swift-tagged.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -935,11 +926,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9B861C58E640BD4AD391900C /* Frameworks */ = {
+		8189054F985D26094EE77069 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21CA04F29CD0DEB0DD27B808 /* Result.framework in Frameworks */,
+				03D1147528CED90EC1D844CE /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -947,8 +938,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76156B580B30704346296641 /* XCTest.framework in Frameworks */,
 				E4D0F435405DABCB51C5B684 /* TestFramework.framework in Frameworks */,
-				32956CD11BD6B02E64F5D8D1 /* swift-tagged.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -960,19 +951,10 @@
 				76DC6A4B18F434BAC239CC4A /* DriverKit.framework in Frameworks */,
 				21425F6DE3D493B6F1E33D21 /* Framework.framework in Frameworks */,
 				A949422315536EACDF8DD78A /* NetworkExtension.framework in Frameworks */,
-				078FAAF5C2B851C7D5EA714F /* Result.framework in Frameworks */,
 				EDB55692D392FD09C3FCFBF6 /* libStaticLibrary_ObjC.a in Frameworks */,
 				C093BF20B99FE892D0F06B2D /* libEndpointSecurity.tbd in Frameworks */,
 				BAA1C1E3828F5D43546AF997 /* libc++.tbd in Frameworks */,
 				A59B3F08914812573AFF6C2D /* libz.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C2323597C6777A02E1FF671C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				307B5322FC5A220652BA6FE0 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -982,7 +964,6 @@
 			files = (
 				D5D493E4A7AD63860E1399DD /* ExternalTarget.framework in Frameworks */,
 				A1588BF3BFFE1DF7409CBA10 /* Framework.framework in Frameworks */,
-				65EBD2D87F1F5FDA63F8C027 /* Result.framework in Frameworks */,
 				71A2AAC5934BDC9EDB6F0D9E /* libStaticLibrary_ObjC.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1032,18 +1013,6 @@
 			path = App_iOS_UITests;
 			sourceTree = "<group>";
 		};
-		12809A79ACE69F501A5FE815 /* Carthage */ = {
-			isa = PBXGroup;
-			children = (
-				DBF93518FC96D95A54552713 /* iOS */,
-				912A7321F662FE41BAAEED67 /* Mac */,
-				D557819B1EE5B42A0A3DD4D1 /* tvOS */,
-				2935454D05445817952E145D /* watchOS */,
-			);
-			name = Carthage;
-			path = Carthage/Build;
-			sourceTree = "<group>";
-		};
 		1A57D1EE1FBC13598F6B5CB0 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -1058,6 +1027,12 @@
 			isa = PBXGroup;
 			children = (
 				2F80635127D17ECB7748067B /* FolderWithDot2.0 */,
+				CE1F06D99242F4223D081F0D /* LaunchScreen.storyboard */,
+				9E17D598D98065767A04740F /* Localizable.strings */,
+				65C8D6D1DDC1512D396C07B7 /* Localizable.stringsdict */,
+				0C6BA0D12467A13EC012C728 /* LocalizedStoryboard.storyboard */,
+				814D72C2B921F60B759C2D4B /* Main.storyboard */,
+				306796628DD52FA55E833B65 /* Model.xcdatamodeld */,
 				AEBCA8CFF769189C0D52031E /* App_iOS.xctestplan */,
 				F0D48A913C087D049C8EDDD7 /* App.entitlements */,
 				7F1A2F579A6F79C62DDA0571 /* AppDelegate.swift */,
@@ -1066,30 +1041,17 @@
 				B5C943D39DD7812CAB94B614 /* Documentation.docc */,
 				C9DDE1B06BCC1CDE0ECF1589 /* Info.plist */,
 				AAA49985DFFE797EE8416887 /* inputList.xcfilelist */,
-				CE1F06D99242F4223D081F0D /* LaunchScreen.storyboard */,
-				9E17D598D98065767A04740F /* Localizable.strings */,
-				65C8D6D1DDC1512D396C07B7 /* Localizable.stringsdict */,
-				0C6BA0D12467A13EC012C728 /* LocalizedStoryboard.storyboard */,
-				814D72C2B921F60B759C2D4B /* Main.storyboard */,
-				306796628DD52FA55E833B65 /* Model.xcdatamodeld */,
 				BF59AC868D227C92CA8B1B57 /* Model.xcmappingmodel */,
 				C7809CE9FE9852C2AA87ACE5 /* module.modulemap */,
 				553D289724905857912C7A1D /* outputList.xcfilelist */,
 				01E6934B571B91EAAFF0EDCB /* Resource.abc */,
 				325F18855099386B08DD309B /* Resource.abcd */,
 				8AF20308873AEEEC4D8C45D1 /* Settings.bundle */,
+				FD5AEA58D3C0A1C8EEDF00F7 /* TestIcon.icon */,
 				0704B6CAFBB53E0EBB08F6B3 /* ViewController.swift */,
 			);
 			name = App;
 			path = App_iOS;
-			sourceTree = "<group>";
-		};
-		2935454D05445817952E145D /* watchOS */ = {
-			isa = PBXGroup;
-			children = (
-				BB178D03E75929F3F5B10C56 /* Result.framework */,
-			);
-			path = watchOS;
 			sourceTree = "<group>";
 		};
 		293D0FF827366B513839236A = {
@@ -1102,6 +1064,7 @@
 				0D039F2E62354C7C8E283BE6 /* App_iOS_UITests */,
 				EE78B4FBD0137D1975C47D76 /* App_macOS */,
 				6DE1C805DC13547F27FD86C6 /* App_macOS_Tests */,
+				D27117FBA2920408002F0B4C /* App_supportedDestinations */,
 				BAE6C12745737019DC9E98BF /* App_watchOS */,
 				795B8D70B674C850B57DD39D /* App_watchOS Extension */,
 				6DBE0EE90642BB3F6E58AD43 /* Configs */,
@@ -1120,6 +1083,9 @@
 				9DB22CB08CFAA455518700DB /* StandaloneFiles */,
 				BDA839814AF73F01F7710518 /* StaticLibrary_ObjC */,
 				CBDAC144248EE9D3838C6AAA /* StaticLibrary_Swift */,
+				6E0D17C5B4E6F01B89254309 /* String Catalogs */,
+				AE2AB2772F70DFFF402AA02B /* SyncedFolder */,
+				AB527E0D553CE53AF54C39CD /* SyncedParent */,
 				8CFD8AD4820FAB9265663F92 /* Tool */,
 				4C7F5EB7D6F3E0E9B426AB4A /* Utilities */,
 				3FEA12CF227D41EF50E5C2DB /* Vendor */,
@@ -1194,6 +1160,23 @@
 			path = UnderFileGroup;
 			sourceTree = "<group>";
 		};
+		69C61547C081D04364A5DE42 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D52EC9AA9FFD3B690C355068 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		6A90AFD865B13D26DA108CAB /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				18722C61B05FFF4CC63D5755 /* ContentView.swift */,
+			);
+			path = tvOS;
+			sourceTree = "<group>";
+		};
 		6BD8F0932CCAD4BBE752866B /* App_Clip_UITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1219,6 +1202,14 @@
 				87DF9DCA8399E3214A7E27CF /* TestProjectTests.swift */,
 			);
 			path = App_macOS_Tests;
+			sourceTree = "<group>";
+		};
+		6E0D17C5B4E6F01B89254309 /* String Catalogs */ = {
+			isa = PBXGroup;
+			children = (
+				E66ABD3EB14C9D63DEF5C532 /* LocalizableStrings.xcstrings */,
+			);
+			path = "String Catalogs";
 			sourceTree = "<group>";
 		};
 		795B8D70B674C850B57DD39D /* App_watchOS Extension */ = {
@@ -1266,20 +1257,23 @@
 			path = "XPC Service";
 			sourceTree = "<group>";
 		};
+		85FEBB7D2103B020423407A2 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				9E5249A284275B0CDF4E5DDA /* iOS */,
+				6A90AFD865B13D26DA108CAB /* tvOS */,
+				15A4363D659A58DA835DE8BA /* MyAppApp.swift */,
+			);
+			name = Sources;
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		8CFD8AD4820FAB9265663F92 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
 				93C033648A37D95027845BD3 /* main.swift */,
 			);
 			path = Tool;
-			sourceTree = "<group>";
-		};
-		912A7321F662FE41BAAEED67 /* Mac */ = {
-			isa = PBXGroup;
-			children = (
-				D296BB7355994040E197A1EE /* Result.framework */,
-			);
-			path = Mac;
 			sourceTree = "<group>";
 		};
 		99EF37D6DEE914E180236A91 /* EndpointSecurity Extension */ = {
@@ -1299,6 +1293,14 @@
 				3571E41E19A5AB8AAAB04109 /* StandaloneAssets.xcassets */,
 			);
 			path = StandaloneFiles;
+			sourceTree = "<group>";
+		};
+		9E5249A284275B0CDF4E5DDA /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				AEEFDE76B5FEC833403C0869 /* ContentView.swift */,
+			);
+			path = iOS;
 			sourceTree = "<group>";
 		};
 		9EDF27BB8A57733E6639D36D /* Resources */ = {
@@ -1332,6 +1334,14 @@
 			path = iMessageApp;
 			sourceTree = "<group>";
 		};
+		AB527E0D553CE53AF54C39CD /* SyncedParent */ = {
+			isa = PBXGroup;
+			children = (
+				A2F1B5386E15A261AC8A4DEE /* SyncedChild */,
+			);
+			path = SyncedParent;
+			sourceTree = "<group>";
+		};
 		AC523591AC7BE9275003D2DB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1343,6 +1353,7 @@
 				B1C33BB070583BE3B0EC0E68 /* App_iOS.app */,
 				0B9D98D935F2C69A1F5BA539 /* App_macOS_Tests.xctest */,
 				33F6DCDC37D2E66543D4965D /* App_macOS.app */,
+				407C3F0009FDCE5B1B7DC2A8 /* App_supportedDestinations.app */,
 				0D09D243DBCF9D32E239F1E8 /* App_watchOS Extension.appex */,
 				A680BE9F68A255B0FB291AE6 /* App_watchOS.app */,
 				84317819C92F78425870E483 /* BundleX.bundle */,
@@ -1382,9 +1393,9 @@
 		BAE6C12745737019DC9E98BF /* App_watchOS */ = {
 			isa = PBXGroup;
 			children = (
+				C872631362DDBAFCE71E5C66 /* Interface.storyboard */,
 				D8A016580A3B8F72B820BFBF /* Assets.xcassets */,
 				FED40A89162E446494DDE7C7 /* Info.plist */,
-				C872631362DDBAFCE71E5C66 /* Interface.storyboard */,
 			);
 			path = App_watchOS;
 			sourceTree = "<group>";
@@ -1402,9 +1413,9 @@
 		BF58996786F85CB77BEE72EF /* iMessageExtension */ = {
 			isa = PBXGroup;
 			children = (
+				753001CDCEAA4C4E1AFF8E87 /* MainInterface.storyboard */,
 				1BC32A813B80A53962A1F365 /* Assets.xcassets */,
 				40863AE6202CFCD0529D8438 /* Info.plist */,
-				753001CDCEAA4C4E1AFF8E87 /* MainInterface.storyboard */,
 				B198242976C3395E31FE000A /* MessagesViewController.swift */,
 			);
 			path = iMessageExtension;
@@ -1413,12 +1424,12 @@
 		C81493FAD71E9A9A19E00AD5 /* App_Clip */ = {
 			isa = PBXGroup;
 			children = (
+				79325B44B19B83EC6CEDBCC5 /* LaunchScreen.storyboard */,
+				2FC2A8A829CE71B1CF415FF7 /* Main.storyboard */,
 				23A2F16890ECF2EE3FED72AE /* AppDelegate.swift */,
 				59DA55A04FA2366B5D0BEEFF /* Assets.xcassets */,
 				1FA5E208EC184E3030D2A21D /* Clip.entitlements */,
 				6F165CDD5BCC13AFF50B65E2 /* Info.plist */,
-				79325B44B19B83EC6CEDBCC5 /* LaunchScreen.storyboard */,
-				2FC2A8A829CE71B1CF415FF7 /* Main.storyboard */,
 				DFE6A6FAAFF701FE729293DE /* ViewController.swift */,
 			);
 			path = App_Clip;
@@ -1432,12 +1443,13 @@
 			path = StaticLibrary_Swift;
 			sourceTree = "<group>";
 		};
-		D557819B1EE5B42A0A3DD4D1 /* tvOS */ = {
+		D27117FBA2920408002F0B4C /* App_supportedDestinations */ = {
 			isa = PBXGroup;
 			children = (
-				B76E17CE3574081D5BF45B44 /* Result.framework */,
+				85FEBB7D2103B020423407A2 /* Sources */,
+				69C61547C081D04364A5DE42 /* Storyboards */,
 			);
-			path = tvOS;
+			path = App_supportedDestinations;
 			sourceTree = "<group>";
 		};
 		D7929BCBA599BD85A3B8A039 /* Projects */ = {
@@ -1446,16 +1458,6 @@
 				F192E783CCA898FBAA5C34EA /* AnotherProject */,
 			);
 			name = Projects;
-			sourceTree = "<group>";
-		};
-		DBF93518FC96D95A54552713 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				0C5AC2545AE4D4F7F44E2E9B /* Result.framework */,
-				0E4841131C451A658AC8596C /* swift-tagged.framework */,
-				FF47010E7368583405AA50CB /* SwiftyJSON.framework */,
-			);
-			path = iOS;
 			sourceTree = "<group>";
 		};
 		ED8625A7E716E1BA50AB88AB /* CrossOverlayFramework */ = {
@@ -1472,10 +1474,10 @@
 		EE78B4FBD0137D1975C47D76 /* App_macOS */ = {
 			isa = PBXGroup;
 			children = (
+				74FBDFA5CB063F6001AD8ACD /* Main.storyboard */,
 				9528528C989D24FE3E6C533E /* App-Info.plist */,
 				09B82F603D981398F38D762E /* AppDelegate.swift */,
 				E55F45EACB0F382722D61C8D /* Assets.xcassets */,
-				74FBDFA5CB063F6001AD8ACD /* Main.storyboard */,
 				A4C3FE6B986506724DAB5D0F /* ViewController.swift */,
 			);
 			path = App_macOS;
@@ -1484,13 +1486,13 @@
 		FC1515684236259C50A7747F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				12809A79ACE69F501A5FE815 /* Carthage */,
 				FDB2B6A77D39CD5602F2125F /* Contacts.framework */,
 				C0A428E67153BB40184F37BE /* DriverKit.framework */,
 				0BB1B49A91B892152D68ED76 /* libc++.tbd */,
 				0BC75409252FF15F540FBB7B /* libEndpointSecurity.tbd */,
 				FD4A16C7B8FEB7F97F3CBE3F /* libz.dylib */,
 				5B785B1161553A7DD6DA4255 /* NetworkExtension.framework */,
+				4C7F9636B706AC92629D0B48 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1640,6 +1642,8 @@
 			dependencies = (
 			);
 			name = IncludedLegacy;
+			packageProductDependencies = (
+			);
 			passBuildSettingsInEnvironment = 0;
 			productName = IncludedLegacy;
 		};
@@ -1653,6 +1657,8 @@
 			dependencies = (
 			);
 			name = Legacy;
+			packageProductDependencies = (
+			);
 			passBuildSettingsInEnvironment = 1;
 			productName = Legacy;
 		};
@@ -1668,7 +1674,6 @@
 				FB79B30FEA6073A29B4D9FCC /* CopyFiles */,
 				A6E1C88C073F8CC6B5B072B6 /* Frameworks */,
 				DE875E9A37F7CB9C347AEFA0 /* Embed System Extensions */,
-				F8CDEFED6ED131A09041F995 /* Embed Frameworks */,
 				CF6B94E7B2D2312582A526F5 /* Embed Dependencies */,
 			);
 			buildRules = (
@@ -1682,6 +1687,8 @@
 				B95DA92D1265C094E71B4A5D /* PBXTargetDependency */,
 			);
 			name = App_macOS;
+			packageProductDependencies = (
+			);
 			productName = App_macOS;
 			productReference = 33F6DCDC37D2E66543D4965D /* App_macOS.app */;
 			productType = "com.apple.product-type.application";
@@ -1692,12 +1699,15 @@
 			buildPhases = (
 				2F72F6483B3356C11F79ACCF /* Headers */,
 				902C8700CD150C726365CB8A /* Sources */,
+				8189054F985D26094EE77069 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = TestFramework;
+			packageProductDependencies = (
+			);
 			productName = TestFramework;
 			productReference = E43116070AFEF5D8C3A5A957 /* TestFramework.framework */;
 			productType = "com.apple.product-type.framework";
@@ -1709,7 +1719,6 @@
 				6F573D15DE1F149EF128C492 /* Sources */,
 				8508BA1B733839E314AF2853 /* Resources */,
 				865AAD9909027AC34D1374EA /* CopyFiles */,
-				37182EC208DBF03DB1BAF452 /* Carthage */,
 				117840B4DBC04099F6779D00 /* Frameworks */,
 				E8BC0F358D693454E5027ECC /* Copy Bundle Resources */,
 				94FF9CA021C43301BA069930 /* Embed App Clips */,
@@ -1728,6 +1737,10 @@
 				E84285243DE0BB361A708079 /* PBXTargetDependency */,
 				E8C078B0A2A2B0E1D35694D5 /* PBXTargetDependency */,
 				981D116D40DBA0407D0E0E94 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A2F1B5386E15A261AC8A4DEE /* SyncedChild */,
+				AE2AB2772F70DFFF402AA02B /* SyncedFolder */,
 			);
 			name = App_iOS;
 			packageProductDependencies = (
@@ -1748,6 +1761,8 @@
 			dependencies = (
 			);
 			name = Tool;
+			packageProductDependencies = (
+			);
 			productName = Tool;
 			productReference = BECEA4A483ADEB8158F640B3 /* Tool */;
 			productType = "com.apple.product-type.tool";
@@ -1765,6 +1780,8 @@
 			dependencies = (
 			);
 			name = CrossOverlayFramework_iOS;
+			packageProductDependencies = (
+			);
 			productName = CrossOverlayFramework_iOS;
 			productReference = 8FE05BF7897ECFD58B7AC8B1 /* CrossOverlayFramework.framework */;
 			productType = "com.apple.product-type.framework";
@@ -1781,6 +1798,8 @@
 			dependencies = (
 			);
 			name = StaticLibrary_ObjC_iOS;
+			packageProductDependencies = (
+			);
 			productName = StaticLibrary_ObjC_iOS;
 			productReference = B221F5A689AD7D3AD52F56B8 /* libStaticLibrary_ObjC.a */;
 			productType = "com.apple.product-type.library.static";
@@ -1796,6 +1815,8 @@
 			dependencies = (
 			);
 			name = iMessageStickersExtension;
+			packageProductDependencies = (
+			);
 			productName = iMessageStickersExtension;
 			productReference = C53ACB2962FED621389C36A2 /* iMessageStickersExtension.appex */;
 			productType = "com.apple.product-type.app-extension.messages-sticker-pack";
@@ -1812,6 +1833,8 @@
 			dependencies = (
 			);
 			name = StaticLibrary_Swift;
+			packageProductDependencies = (
+			);
 			productName = StaticLibrary_Swift;
 			productReference = 8CB86294FB939FE6E90932E1 /* libStaticLibrary_Swift.a */;
 			productType = "com.apple.product-type.library.static";
@@ -1828,6 +1851,8 @@
 			dependencies = (
 			);
 			name = iMessageExtension;
+			packageProductDependencies = (
+			);
 			productName = iMessageExtension;
 			productReference = D629E142AB87C681D4EC90F7 /* iMessageExtension.appex */;
 			productType = "com.apple.product-type.app-extension.messages";
@@ -1845,6 +1870,8 @@
 				62DA64F61B337719A2CF993D /* PBXTargetDependency */,
 			);
 			name = App_watchOS;
+			packageProductDependencies = (
+			);
 			productName = App_watchOS;
 			productReference = A680BE9F68A255B0FB291AE6 /* App_watchOS.app */;
 			productType = "com.apple.product-type.application.watchapp2";
@@ -1859,6 +1886,8 @@
 			dependencies = (
 			);
 			name = BundleY;
+			packageProductDependencies = (
+			);
 			productName = BundleY;
 			productReference = BB677D970923F663D846D7E0 /* BundleY.bundle */;
 			productType = "com.apple.product-type.bundle";
@@ -1876,6 +1905,8 @@
 			dependencies = (
 			);
 			name = CrossOverlayFramework_macOS;
+			packageProductDependencies = (
+			);
 			productName = CrossOverlayFramework_macOS;
 			productReference = E0F31A9DE15B210D101AFC81 /* CrossOverlayFramework.framework */;
 			productType = "com.apple.product-type.framework";
@@ -1886,13 +1917,14 @@
 			buildPhases = (
 				AE7971E1CA54D23C264E6541 /* Sources */,
 				4A6E8F3A477AA5F67A8EB733 /* Resources */,
-				8F8EE32AFABD8FEF97625325 /* Carthage */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "App_watchOS Extension";
+			packageProductDependencies = (
+			);
 			productName = "App_watchOS Extension";
 			productReference = 0D09D243DBCF9D32E239F1E8 /* App_watchOS Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
@@ -1910,6 +1942,8 @@
 			dependencies = (
 			);
 			name = CrossOverlayFramework_tvOS;
+			packageProductDependencies = (
+			);
 			productName = CrossOverlayFramework_tvOS;
 			productReference = 0095836FE59395511E0CB4F0 /* CrossOverlayFramework.framework */;
 			productType = "com.apple.product-type.framework";
@@ -1926,6 +1960,8 @@
 			dependencies = (
 			);
 			name = DriverKitDriver;
+			packageProductDependencies = (
+			);
 			productName = DriverKitDriver;
 			productReference = 83B5EC7EF81F7E4B6F426D4E /* DriverKitDriver.dext */;
 			productType = "com.apple.product-type.driver-extension";
@@ -1946,6 +1982,8 @@
 				CE96B0951433713033A03DCD /* PBXTargetDependency */,
 			);
 			name = Framework_tvOS;
+			packageProductDependencies = (
+			);
 			productName = Framework_tvOS;
 			productReference = 7D67F1C1BFBACE101DE7DB51 /* Framework.framework */;
 			productType = "com.apple.product-type.framework";
@@ -1956,7 +1994,6 @@
 			buildPhases = (
 				54B4D7ADCE0441B5A91DE22D /* Headers */,
 				D1F422E9C4DD531AA88418C9 /* Sources */,
-				C2323597C6777A02E1FF671C /* Frameworks */,
 				3D0637F4554EAD6FA48105BF /* MyScript */,
 			);
 			buildRules = (
@@ -1965,6 +2002,8 @@
 				AD555A4814F2D294E2AC72D8 /* PBXTargetDependency */,
 			);
 			name = Framework_macOS;
+			packageProductDependencies = (
+			);
 			productName = Framework_macOS;
 			productReference = 41FC82ED1C4C3B7B3D7B2FB7 /* Framework.framework */;
 			productType = "com.apple.product-type.framework";
@@ -1981,6 +2020,8 @@
 			dependencies = (
 			);
 			name = StaticLibrary_ObjC_macOS;
+			packageProductDependencies = (
+			);
 			productName = StaticLibrary_ObjC_macOS;
 			productReference = 86169DEEDEAF09AB89C8A31D /* libStaticLibrary_ObjC.a */;
 			productType = "com.apple.product-type.library.static";
@@ -2000,6 +2041,8 @@
 				2D1B4333107E10912508724E /* PBXTargetDependency */,
 			);
 			name = App_Clip_Tests;
+			packageProductDependencies = (
+			);
 			productName = App_Clip_Tests;
 			productReference = 3FC04772130400920D68A167 /* App_Clip_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -2016,6 +2059,8 @@
 			dependencies = (
 			);
 			name = Framework2_watchOS;
+			packageProductDependencies = (
+			);
 			productName = Framework2_watchOS;
 			productReference = AB055761199DF36DB0C629A6 /* Framework2.framework */;
 			productType = "com.apple.product-type.framework";
@@ -2036,6 +2081,8 @@
 				35DF16CA4A1F88140CF69620 /* PBXTargetDependency */,
 			);
 			name = Framework_watchOS;
+			packageProductDependencies = (
+			);
 			productName = Framework_watchOS;
 			productReference = 6177CC6263783487E93F7F4D /* Framework.framework */;
 			productType = "com.apple.product-type.framework";
@@ -2045,7 +2092,6 @@
 			buildConfigurationList = 62C52A55CB8D3BD9A055FD14 /* Build configuration list for PBXNativeTarget "App_macOS_Tests" */;
 			buildPhases = (
 				8A616537E6E1BEAB59E069C7 /* Sources */,
-				6CB76DFA8662672C4245AF41 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2053,6 +2099,8 @@
 				8B1B6143B8996B3CF0FE61C5 /* PBXTargetDependency */,
 			);
 			name = App_macOS_Tests;
+			packageProductDependencies = (
+			);
 			productName = App_macOS_Tests;
 			productReference = 0B9D98D935F2C69A1F5BA539 /* App_macOS_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -2069,6 +2117,8 @@
 			dependencies = (
 			);
 			name = StaticLibrary_ObjC_watchOS;
+			packageProductDependencies = (
+			);
 			productName = StaticLibrary_ObjC_watchOS;
 			productReference = 46DD8F9AAC104BDB63793625 /* libStaticLibrary_ObjC.a */;
 			productType = "com.apple.product-type.library.static";
@@ -2086,6 +2136,8 @@
 				053FF4219E7A0E38E90071B0 /* PBXTargetDependency */,
 			);
 			name = iMessageApp;
+			packageProductDependencies = (
+			);
 			productName = iMessageApp;
 			productReference = 9A87A926D563773658FB87FE /* iMessageApp.app */;
 			productType = "com.apple.product-type.application.messages";
@@ -2102,6 +2154,8 @@
 			dependencies = (
 			);
 			name = Framework2_tvOS;
+			packageProductDependencies = (
+			);
 			productName = Framework2_tvOS;
 			productReference = A0DC40025AB59B688E758829 /* Framework2.framework */;
 			productType = "com.apple.product-type.framework";
@@ -2111,7 +2165,6 @@
 			buildConfigurationList = 129D9E77D45A66B1C78578F2 /* Build configuration list for PBXNativeTarget "App_Clip_UITests" */;
 			buildPhases = (
 				2E1429F0FB524A2BCFC61DF1 /* Sources */,
-				05D615CB74F875917AA8C9B0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2119,6 +2172,8 @@
 				1341A437B2D0402F4F4CEA51 /* PBXTargetDependency */,
 			);
 			name = App_Clip_UITests;
+			packageProductDependencies = (
+			);
 			productName = App_Clip_UITests;
 			productReference = 7C7EC00B53FF878007F6ECAB /* App_Clip_UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -2135,6 +2190,8 @@
 			dependencies = (
 			);
 			name = StaticLibrary_ObjC_tvOS;
+			packageProductDependencies = (
+			);
 			productName = StaticLibrary_ObjC_tvOS;
 			productReference = 469B630D28015F0EDC456F6B /* libStaticLibrary_ObjC.a */;
 			productType = "com.apple.product-type.library.static";
@@ -2151,6 +2208,8 @@
 			dependencies = (
 			);
 			name = EndpointSecuritySystemExtension;
+			packageProductDependencies = (
+			);
 			productName = EndpointSecuritySystemExtension;
 			productReference = E5E0A80CCE8F8DB662DCD2D0 /* EndpointSecuritySystemExtension.systemextension */;
 			productType = "com.apple.product-type.system-extension";
@@ -2167,6 +2226,8 @@
 			dependencies = (
 			);
 			name = NetworkSystemExtension;
+			packageProductDependencies = (
+			);
 			productName = NetworkSystemExtension;
 			productReference = 2049B6DD2AFE85F9DC9F3EB3 /* NetworkSystemExtension.systemextension */;
 			productType = "com.apple.product-type.system-extension";
@@ -2177,7 +2238,6 @@
 			buildPhases = (
 				0D09E5BA6B8442DC0ABB8AA6 /* Headers */,
 				40A4456A24F99A01E340C032 /* Sources */,
-				9B861C58E640BD4AD391900C /* Frameworks */,
 				43E9CD3CEA3FE8944C659368 /* MyScript */,
 			);
 			buildRules = (
@@ -2186,6 +2246,8 @@
 				486D84E583999BAA22C679EC /* PBXTargetDependency */,
 			);
 			name = Framework_iOS;
+			packageProductDependencies = (
+			);
 			productName = Framework_iOS;
 			productReference = 8A9274BE42A03DC5DA1FAD04 /* Framework.framework */;
 			productType = "com.apple.product-type.framework";
@@ -2201,8 +2263,30 @@
 			dependencies = (
 			);
 			name = EntitledApp;
+			packageProductDependencies = (
+			);
 			productName = EntitledApp;
 			productReference = 7D700FA699849D2F95216883 /* EntitledApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C0570E2FB50D830D8D423396 /* App_supportedDestinations */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5EC789CCE1928A4CDA00DD1E /* Build configuration list for PBXNativeTarget "App_supportedDestinations" */;
+			buildPhases = (
+				CF8BAE171BAAFB2E5DDB9C19 /* Sources */,
+				97119CD9F01D9A9522EF3526 /* Resources */,
+				36418B6CABA06BA9B206556E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = App_supportedDestinations;
+			packageProductDependencies = (
+				C7F9B7EDE85527EFEA85D46D /* Swinject */,
+			);
+			productName = App_supportedDestinations;
+			productReference = 407C3F0009FDCE5B1B7DC2A8 /* App_supportedDestinations.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C7F90FD0FAAF232B3E015D38 /* CrossOverlayFramework_watchOS */ = {
@@ -2218,6 +2302,8 @@
 			dependencies = (
 			);
 			name = CrossOverlayFramework_watchOS;
+			packageProductDependencies = (
+			);
 			productName = CrossOverlayFramework_watchOS;
 			productReference = 89EB41A001D8BF26431C5798 /* CrossOverlayFramework.framework */;
 			productType = "com.apple.product-type.framework";
@@ -2234,6 +2320,8 @@
 			dependencies = (
 			);
 			name = Framework2_iOS;
+			packageProductDependencies = (
+			);
 			productName = Framework2_iOS;
 			productReference = 3EF21DF245F66BEF5446AAEF /* Framework2.framework */;
 			productType = "com.apple.product-type.framework";
@@ -2244,7 +2332,6 @@
 			buildPhases = (
 				6F11C066A401E4F02A1188EB /* Sources */,
 				AFA07EE1616E0EE7065760C9 /* Resources */,
-				E5D02C719D4534BBA65A54BE /* Carthage */,
 				DFDFD9EDAD45D89D1080FC5D /* Frameworks */,
 				848740AD60C4329197FF876B /* Embed Frameworks */,
 			);
@@ -2256,6 +2343,8 @@
 				CFEACC1CED73B52EA1CCD054 /* PBXTargetDependency */,
 			);
 			name = App_Clip;
+			packageProductDependencies = (
+			);
 			productName = App_Clip;
 			productReference = 38DB679FF1CF4E379D1AB103 /* App_Clip.app */;
 			productType = "com.apple.product-type.application.on-demand-install-capable";
@@ -2270,6 +2359,8 @@
 			dependencies = (
 			);
 			name = BundleX;
+			packageProductDependencies = (
+			);
 			productName = BundleX;
 			productReference = 84317819C92F78425870E483 /* BundleX.bundle */;
 			productType = "com.apple.product-type.bundle";
@@ -2289,6 +2380,8 @@
 				6AE62A40F64046B597B07801 /* PBXTargetDependency */,
 			);
 			name = App_iOS_Tests;
+			packageProductDependencies = (
+			);
 			productName = App_iOS_Tests;
 			productReference = CB77A637470A3CDA2BDDBE99 /* App_iOS_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -2304,6 +2397,8 @@
 			dependencies = (
 			);
 			name = ExternalTarget;
+			packageProductDependencies = (
+			);
 			productName = ExternalTarget;
 			productReference = 2385A62F6C6EE8D461EE19F2 /* ExternalTarget.framework */;
 			productType = "com.apple.product-type.framework";
@@ -2319,6 +2414,8 @@
 			dependencies = (
 			);
 			name = "XPC Service";
+			packageProductDependencies = (
+			);
 			productName = "XPC Service";
 			productReference = 22237B8EBD9E6BE8EBC8735F /* XPC Service.xpc */;
 			productType = "com.apple.product-type.xpc-service";
@@ -2328,7 +2425,6 @@
 			buildConfigurationList = 68CC35789B0DB020E2CFC517 /* Build configuration list for PBXNativeTarget "App_iOS_UITests" */;
 			buildPhases = (
 				7334BD12862A3CED4BE1C6B5 /* Sources */,
-				08DA9F1F0ED13AC054003B27 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2336,6 +2432,8 @@
 				49587048934568C2182DA825 /* PBXTargetDependency */,
 			);
 			name = App_iOS_UITests;
+			packageProductDependencies = (
+			);
 			productName = App_iOS_UITests;
 			productReference = 13EEAB58665D79C15184D9D0 /* App_iOS_UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -2352,6 +2450,8 @@
 			dependencies = (
 			);
 			name = Framework2_macOS;
+			packageProductDependencies = (
+			);
 			productName = Framework2_macOS;
 			productReference = 2233774B86539B1574D206B0 /* Framework2.framework */;
 			productType = "com.apple.product-type.framework";
@@ -2362,7 +2462,8 @@
 		0FBAE303E3CFC2ABAC876A77 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1200;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					020A320BB3736FCDE6CC4E70 = {
 						ProvisioningStyle = Automatic;
@@ -2386,7 +2487,6 @@
 				);
 			};
 			buildConfigurationList = D91E14E36EC0B415578456F2 /* Build configuration list for PBXProject "Project" */;
-			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -2394,9 +2494,12 @@
 				en,
 			);
 			mainGroup = 293D0FF827366B513839236A;
+			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				4EDA79334592CBBA0E507AD2 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = AC523591AC7BE9275003D2DB /* Products */;
 			projectDirPath = "";
 			projectReferences = (
 				{
@@ -2406,49 +2509,50 @@
 			);
 			projectRoot = "";
 			targets = (
-				D137C04B64B7052419A2DF4E /* App_Clip */,
-				63BFF75AA22335E3DDD5E26A /* App_Clip_Tests */,
-				91C3E922A8482E07649971B9 /* App_Clip_UITests */,
-				0867B0DACEF28C11442DE8F7 /* App_iOS */,
-				DC2F16BAA6E13B44AB62F888 /* App_iOS_Tests */,
-				F674B2CFC4738EEC49BAD0DA /* App_iOS_UITests */,
-				020A320BB3736FCDE6CC4E70 /* App_macOS */,
-				71E2BDAC4B8E8FC2BBF75C55 /* App_macOS_Tests */,
-				208179651927D1138D19B5AD /* App_watchOS */,
-				307AE3FA155FFD09B74AE351 /* App_watchOS Extension */,
 				DA40AB367B606CCE2FDD398D /* BundleX */,
 				271CAC331D24F4F7E12C819C /* BundleY */,
-				0CE8BE7C80651629EC056066 /* CrossOverlayFramework_iOS */,
-				2F4FEAEFD7EE82DC49D899FC /* CrossOverlayFramework_macOS */,
-				3BF66A4668DFAF9338791F60 /* CrossOverlayFramework_tvOS */,
-				C7F90FD0FAAF232B3E015D38 /* CrossOverlayFramework_watchOS */,
-				428715FBC1D86458DA70CBDE /* DriverKitDriver */,
-				9F551F66949B55E8328EB995 /* EndpointSecuritySystemExtension */,
-				B61ED4688789B071275E2B7A /* EntitledApp */,
 				E7454C10EA126A93537DD57E /* ExternalTarget */,
-				CE7D183D3752B5B35D2D8E6D /* Framework2_iOS */,
-				FC26AF2506D3B2B40DE8A5F8 /* Framework2_macOS */,
-				8B9A14DC280CCE013CC86440 /* Framework2_tvOS */,
-				6ED01BC471A8C3642258E178 /* Framework2_watchOS */,
-				AE3F93DB94E7208F2F1D9A78 /* Framework_iOS */,
-				53A3B531E3947D8A8722745E /* Framework_macOS */,
-				536ACF18E4603B59207D43CE /* Framework_tvOS */,
-				71B5187E710718C1A205D4DC /* Framework_watchOS */,
 				700328EE1570207608D6ADB3 /* IncludedLegacy */,
 				72C923899DE05F1281872160 /* Legacy */,
+				020A320BB3736FCDE6CC4E70 /* App_macOS */,
+				0867B0DACEF28C11442DE8F7 /* App_iOS */,
+				B61ED4688789B071275E2B7A /* EntitledApp */,
+				C0570E2FB50D830D8D423396 /* App_supportedDestinations */,
+				208179651927D1138D19B5AD /* App_watchOS */,
+				307AE3FA155FFD09B74AE351 /* App_watchOS Extension */,
+				834F55973F05AC8A18144DB0 /* iMessageApp */,
+				1C26A6A0BC446191F311D470 /* iMessageExtension */,
+				192C574D74079A99AF1AD0B1 /* iMessageStickersExtension */,
+				428715FBC1D86458DA70CBDE /* DriverKitDriver */,
 				AD28397BCC984F769EE8A937 /* NetworkSystemExtension */,
+				9F551F66949B55E8328EB995 /* EndpointSecuritySystemExtension */,
 				13E8C5AB873CEE21E18E552F /* StaticLibrary_ObjC_iOS */,
 				578C80E461E675508CED5DC3 /* StaticLibrary_ObjC_macOS */,
 				93542A75A613F00FDB5C9C63 /* StaticLibrary_ObjC_tvOS */,
 				7D3D92034F4F203C140574F0 /* StaticLibrary_ObjC_watchOS */,
 				19BFB84599B0AA1275A9662D /* StaticLibrary_Swift */,
-				BF3693DCA6182D7AEC410AFC /* SuperTarget */,
+				AE3F93DB94E7208F2F1D9A78 /* Framework_iOS */,
+				53A3B531E3947D8A8722745E /* Framework_macOS */,
+				536ACF18E4603B59207D43CE /* Framework_tvOS */,
+				71B5187E710718C1A205D4DC /* Framework_watchOS */,
+				CE7D183D3752B5B35D2D8E6D /* Framework2_iOS */,
+				FC26AF2506D3B2B40DE8A5F8 /* Framework2_macOS */,
+				8B9A14DC280CCE013CC86440 /* Framework2_tvOS */,
+				6ED01BC471A8C3642258E178 /* Framework2_watchOS */,
 				0636AAF06498C336E1CEEDE4 /* TestFramework */,
-				090315A24AC8E8B8F318A709 /* Tool */,
+				0CE8BE7C80651629EC056066 /* CrossOverlayFramework_iOS */,
+				2F4FEAEFD7EE82DC49D899FC /* CrossOverlayFramework_macOS */,
+				3BF66A4668DFAF9338791F60 /* CrossOverlayFramework_tvOS */,
+				C7F90FD0FAAF232B3E015D38 /* CrossOverlayFramework_watchOS */,
+				DC2F16BAA6E13B44AB62F888 /* App_iOS_Tests */,
+				F674B2CFC4738EEC49BAD0DA /* App_iOS_UITests */,
+				71E2BDAC4B8E8FC2BBF75C55 /* App_macOS_Tests */,
 				E7815F2F0D9CDECF9185AAF3 /* XPC Service */,
-				834F55973F05AC8A18144DB0 /* iMessageApp */,
-				1C26A6A0BC446191F311D470 /* iMessageExtension */,
-				192C574D74079A99AF1AD0B1 /* iMessageStickersExtension */,
+				090315A24AC8E8B8F318A709 /* Tool */,
+				D137C04B64B7052419A2DF4E /* App_Clip */,
+				63BFF75AA22335E3DDD5E26A /* App_Clip_Tests */,
+				91C3E922A8482E07649971B9 /* App_Clip_UITests */,
+				BF3693DCA6182D7AEC410AFC /* SuperTarget */,
 			);
 		};
 /* End PBXProject section */
@@ -2507,6 +2611,7 @@
 				A9548E5DCFE92236494164DF /* LaunchScreen.storyboard in Resources */,
 				6E8F8303759824631C8D9DA3 /* Localizable.strings in Resources */,
 				E5DD0AD6F7AE1DD4AF98B83E /* Localizable.stringsdict in Resources */,
+				76F3F9A5E2A4623430374F31 /* LocalizableStrings.xcstrings in Resources */,
 				2A7EB1A9A365A7EC5D49AFCF /* LocalizedStoryboard.storyboard in Resources */,
 				49A4B8937BB5520B36EA33F0 /* Main.storyboard in Resources */,
 				900CFAD929CAEE3861127627 /* MyBundle.bundle in Resources */,
@@ -2514,8 +2619,17 @@
 				61601545B6BE00CA74A4E38F /* SceneKitCatalog.scnassets in Resources */,
 				28A96EBC76D53817AABDA91C /* Settings.bundle in Resources */,
 				E8A135F768448632F8D77C8F /* StandaloneAssets.xcassets in Resources */,
+				6F3848C1EF3E43A5AC2A4D40 /* TestIcon.icon in Resources */,
 				818D448D4DDD6649B5B26098 /* example.mp4 in Resources */,
 				2C7C03B45571A13D472D6B23 /* iMessageApp.app in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97119CD9F01D9A9522EF3526 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2698ED273D0A5820B28CAD20 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2564,22 +2678,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "ditto \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-		};
-		37182EC208DBF03DB1BAF452 /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
-			);
-			name = Carthage;
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/bin/sh -l";
-			shellScript = "carthage copy-frameworks\n";
 		};
 		3D0637F4554EAD6FA48105BF /* MyScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2654,22 +2752,6 @@
 			shellPath = /bin/sh;
 			shellScript = "echo \"You ran a script\"\n";
 		};
-		8F8EE32AFABD8FEF97625325 /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/watchOS/Result.framework",
-			);
-			name = Carthage;
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/bin/sh -l";
-			shellScript = "carthage copy-frameworks\n";
-		};
 		BA454AAC926EDFCDA9226CBC /* MyScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2726,22 +2808,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "echo \"do the thing\"";
-		};
-		E5D02C719D4534BBA65A54BE /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
-			);
-			name = Carthage;
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/bin/sh -l";
-			shellScript = "carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2996,6 +3062,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				713F57A10C62F70058D7FB0A /* FrameworkFile.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF8BAE171BAAFB2E5DDB9C19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAF8470C7F1BF207DBE6AEE3 /* ContentView.swift in Sources */,
+				1B485D6584C3B47AC58831C6 /* ContentView.swift in Sources */,
+				B358AB913543E62237FCC4E3 /* MyAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3358,10 +3434,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.project.Framework-watchOS";
@@ -3463,11 +3535,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS_UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3490,12 +3557,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.project.ExternalTarget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.project.external;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3507,10 +3575,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = App_Clip/Clip.entitlements;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = App_Clip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3557,11 +3621,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3601,10 +3660,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = App_Clip_UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3622,11 +3677,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS_UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3644,11 +3694,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS_UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3681,10 +3726,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
 				INFOPLIST_FILE = "App_watchOS Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3717,11 +3758,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3779,10 +3815,6 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = App_macOS_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3829,10 +3861,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
 				INFOPLIST_FILE = "App_watchOS Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3890,11 +3918,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS_UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3926,10 +3949,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = "App_macOS/App-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4107,6 +4126,26 @@
 			};
 			name = "Staging Debug";
 		};
+		24CFBB3ABB9E14E85035B892 /* Production Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = App_supportedDestinations/Info.generated.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.TestApp;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator appletvos appletvsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+			};
+			name = "Production Debug";
+		};
 		2569D399CA3C4828EF87AD78 /* Test Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -4116,10 +4155,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4145,10 +4180,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4224,12 +4255,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.project.ExternalTarget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.project.external;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4241,11 +4273,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4263,11 +4290,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4285,11 +4307,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4306,6 +4323,7 @@
 		31931061043C66589547105C /* Staging Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4344,10 +4362,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = App_Clip_UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4434,10 +4448,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = App_Clip_UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4455,10 +4465,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = App_Clip/Clip.entitlements;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = App_Clip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4492,10 +4498,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = "App_macOS/App-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4543,10 +4545,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4572,6 +4570,7 @@
 		414544E2FA4DE102442A71CD /* Production Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4623,10 +4622,6 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = App_macOS_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4664,10 +4659,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = "App_macOS/App-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4728,10 +4719,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = App_Clip_UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4797,10 +4784,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
 				INFOPLIST_FILE = "App_watchOS Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4813,6 +4796,26 @@
 				TARGETED_DEVICE_FAMILY = 4;
 			};
 			name = "Production Release";
+		};
+		4C11A3E7EA48B5FB556D4614 /* Staging Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = App_supportedDestinations/Info.generated.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.TestApp;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator appletvos appletvsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+			};
+			name = "Staging Debug";
 		};
 		4D5DC2028DC046B8AF0B9B83 /* Test Debug */ = {
 			isa = XCBuildConfiguration;
@@ -4868,10 +4871,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
 				INFOPLIST_FILE = "App_watchOS Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4889,10 +4888,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = App_Clip/Clip.entitlements;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = App_Clip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4913,10 +4908,6 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = App_macOS_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4934,10 +4925,6 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = App_macOS_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4994,10 +4981,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5030,11 +5013,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5054,10 +5032,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = App_Clip_UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5080,10 +5054,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5145,10 +5115,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5173,10 +5139,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5215,10 +5177,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5299,10 +5257,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
 				INFOPLIST_FILE = "App_watchOS Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5325,10 +5279,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5361,6 +5311,7 @@
 		64EC1B53D612851D51D18FD2 /* Production Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5381,10 +5332,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5523,6 +5470,7 @@
 		71529460FB00BCDF2064C57F /* Staging Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5556,6 +5504,26 @@
 				TARGETED_DEVICE_FAMILY = 4;
 			};
 			name = "Staging Debug";
+		};
+		75B3C83C754AA9C12ABF5E54 /* Staging Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = App_supportedDestinations/Info.generated.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.TestApp;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator appletvos appletvsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+			};
+			name = "Staging Release";
 		};
 		77B8B41EBA5D778EB3AF89DC /* Production Debug */ = {
 			isa = XCBuildConfiguration;
@@ -5601,11 +5569,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5653,11 +5616,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5699,10 +5657,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = App_Clip/Clip.entitlements;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = App_Clip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5721,6 +5675,7 @@
 		7D73A7FB339A39293BD2DB9E /* Staging Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5753,6 +5708,26 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = "Production Release";
+		};
+		7F3F6A813F8B126258780E8D /* Production Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = App_supportedDestinations/Info.generated.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.TestApp;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator appletvos appletvsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 			};
 			name = "Production Release";
 		};
@@ -5791,10 +5766,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5838,10 +5809,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = App_Clip/Clip.entitlements;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = App_Clip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5860,6 +5827,7 @@
 		85E6B40848AC2A0B1F921553 /* Test Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5962,10 +5930,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6008,6 +5972,7 @@
 		917341F64B3A9B883FE942AD /* Production Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -6034,6 +5999,7 @@
 		924BB9ED8B14A02ABF88CC23 /* Production Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -6080,10 +6046,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = "App_macOS/App-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6131,12 +6093,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.project.ExternalTarget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.project.external;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -6177,10 +6140,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.project.Framework-watchOS";
@@ -6212,10 +6171,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = "App_macOS/App-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6240,10 +6195,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6286,6 +6237,26 @@
 				SDKROOT = macosx;
 			};
 			name = "Staging Debug";
+		};
+		98EE00BF46FAE62F16C25E9C /* Test Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = App_supportedDestinations/Info.generated.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.TestApp;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator appletvos appletvsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+			};
+			name = "Test Release";
 		};
 		9A891313A139893990989BDD /* Test Debug */ = {
 			isa = XCBuildConfiguration;
@@ -6371,10 +6342,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6436,11 +6403,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6467,6 +6429,26 @@
 				SDKROOT = macosx;
 			};
 			name = "Production Debug";
+		};
+		A4015127D0A01FE60CF5621B /* Test Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = App_supportedDestinations/Info.generated.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.TestApp;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator appletvos appletvsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+			};
+			name = "Test Debug";
 		};
 		A59DDFBFCF18C44A993CFB00 /* Test Debug */ = {
 			isa = XCBuildConfiguration;
@@ -6515,10 +6497,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6648,11 +6626,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6717,12 +6690,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.project.ExternalTarget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.project.external;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -6748,11 +6722,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6791,6 +6760,7 @@
 		B227B91964080DEF6C426483 /* Test Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -6921,12 +6891,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.project.ExternalTarget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.project.external;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -6937,6 +6908,7 @@
 		B7EBD1A3A3A7E66100F5C845 /* Test Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -6976,10 +6948,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.project.Framework-watchOS";
@@ -7033,11 +7001,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7054,6 +7017,7 @@
 		BA21E149424C2D03E5E50EC1 /* Test Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -7084,11 +7048,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS_UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7133,11 +7092,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7316,10 +7270,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = App_Clip/Clip.entitlements;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = App_Clip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7344,12 +7294,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.project.ExternalTarget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.project.external;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -7361,11 +7312,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7388,10 +7334,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.project.Framework-watchOS";
@@ -7476,10 +7418,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = "App_macOS/App-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7573,11 +7511,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7601,10 +7534,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -7643,10 +7572,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.project.Framework-watchOS";
@@ -7663,11 +7588,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7775,10 +7695,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -7867,10 +7783,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -7912,11 +7824,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS_UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7954,10 +7861,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.project.Framework-watchOS";
@@ -8049,11 +7952,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8071,11 +7969,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
-				);
 				INFOPLIST_FILE = App_iOS_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8185,6 +8078,7 @@
 		EBA3332D0144AAAA57630865 /* Staging Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -8200,10 +8094,6 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = App_macOS_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8323,10 +8213,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = App_Clip_UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8344,10 +8230,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
 				INFOPLIST_FILE = "App_watchOS Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8411,10 +8293,6 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = App_macOS_Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8716,6 +8594,19 @@
 				AA4F4236D960D3ACE683A815 /* Staging Release */,
 				EC9867399E6694681F8903B1 /* Test Debug */,
 				CA08CB7E7DBBC99CDC7F2C2E /* Test Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Production Debug";
+		};
+		5EC789CCE1928A4CDA00DD1E /* Build configuration list for PBXNativeTarget "App_supportedDestinations" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24CFBB3ABB9E14E85035B892 /* Production Debug */,
+				7F3F6A813F8B126258780E8D /* Production Release */,
+				4C11A3E7EA48B5FB556D4614 /* Staging Debug */,
+				75B3C83C754AA9C12ABF5E54 /* Staging Release */,
+				A4015127D0A01FE60CF5621B /* Test Debug */,
+				98EE00BF46FAE62F16C25E9C /* Test Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Production Debug";
@@ -9124,6 +9015,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C7F9B7EDE85527EFEA85D46D /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4EDA79334592CBBA0E507AD2 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
 		D7917D10F77DA9D69937D493 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4EDA79334592CBBA0E507AD2 /* XCRemoteSwiftPackageReference "Swinject" */;

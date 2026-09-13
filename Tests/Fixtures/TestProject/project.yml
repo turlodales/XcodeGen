@@ -71,6 +71,7 @@ breakpoints:
   - type: IDEConstraintError
     continueAfterRunningActions: true
   - type: IDETestFailure
+  - type: RuntimeIssue
 targets:
   Legacy:
     type: ""
@@ -162,6 +163,18 @@ targets:
         resourceTags:
           - tag1
           - tag2
+      - String Catalogs/LocalizableStrings.xcstrings
+      - path: SyncedFolder
+        type: syncedFolder
+        excludes:
+          - ExcludedFile.swift
+          - Info.plist
+        explicitFolders:
+          - Resources
+          - "**/*Tests"
+      - path: SyncedParent/SyncedChild
+        type: syncedFolder
+        createIntermediateGroups: true
     settings:
       INFOPLIST_FILE: App_iOS/Info.plist
       PRODUCT_BUNDLE_IDENTIFIER: com.project.app
@@ -169,11 +182,6 @@ targets:
       - target: Framework_iOS
         platformFilter: all
       - target: StaticLibrary_ObjC_iOS
-      - carthage: Result
-        platformFilter: macOS
-      - carthage: SwiftyJSON
-        linkType: static
-        platformFilter: iOS
       - target: Framework2_iOS
         weak: true
         platformFilter: iOS
@@ -231,6 +239,29 @@ targets:
       properties:
         com.apple.security.application-groups: group.com.app
 
+  App_supportedDestinations:
+    type: application
+    supportedDestinations: [iOS, tvOS]
+    info:
+      path: App_supportedDestinations/Info.generated.plist
+      properties:
+        CFBundleDisplayName: "TestApp"
+        CFBundleVersion: "1.0.0"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.test.TestApp
+    sources:
+      - path: App_supportedDestinations/Sources
+        group: App_supportedDestinations
+        inferDestinationFiltersByPath: true
+      - path: App_supportedDestinations/Storyboards
+        group: App_supportedDestinations
+        destinationFilters: [iOS]
+    dependencies:
+      - package: Swinject
+        product: Swinject
+        destinationFilters: [tvOS]
+
   App_watchOS:
       type: application.watchapp2
       platform: watchOS
@@ -250,9 +281,6 @@ targets:
         App_watchOS Extension
       settings:
         PRODUCT_BUNDLE_IDENTIFIER: com.project.app.watch.extension
-      dependencies:
-        - carthage: Result
-          link: false
 
   iMessageApp:
     type: application.messages
@@ -339,7 +367,6 @@ targets:
       - name: MyScript
         path: scripts/script.sh
     dependencies:
-      - carthage: Result
       - target: StaticLibrary_ObjC_${platform}
       - target: Framework2_${platform}
         platforms: [tvOS, watchOS]
@@ -358,7 +385,7 @@ targets:
       - path: Framework
         excludes:
           - "*.xcodeproj"
-    depencencies:
+    dependencies:
       - sdk: Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework
         root: DEVELOPER_DIR
 
@@ -377,8 +404,6 @@ targets:
     dependencies:
       - target: App_iOS
       - target: TestFramework
-      - carthage: swift-tagged
-        linkType: static
   App_iOS_UITests:
     type: bundle.ui-testing
     platform: iOS
@@ -434,8 +459,6 @@ targets:
     dependencies:
       - target: App_Clip
       - target: TestFramework
-      - carthage: swift-tagged
-        linkType: static
 
   App_Clip_UITests:
     type: bundle.ui-testing
@@ -479,9 +502,9 @@ schemes:
         defaultLocation: Honolulu, HI, USA
       customLLDBInit: ${SRCROOT}/.lldbinit
       enableGPUFrameCaptureMode: "disabled"
-      enableGPUValidationMode: "disabled"
+      enableGPUValidationMode: false
       storeKitConfiguration: "App_iOS/Configuration.storekit"
-      macroExpansion: App_iOS 
+      macroExpansion: App_iOS
     test:
       gatherCoverageData: true
       targets:
